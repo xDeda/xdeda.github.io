@@ -9,7 +9,19 @@ function doStuff() {
 	var xs=x.toLowerCase();
 
     var found = [];
-    if (xs) {
+
+    if (xs && isNaN(xs) === false) {
+        // was "i <= titles.length"
+        for (var i = 0; i < titles.length; i++){
+            // was "xs.indexOf(titles[i].toLowerCase())"
+            if (titles[i].toLowerCase().indexOf(xs) != -1){
+                // need to add items to list here
+                found.push("<font size=1>"+titles[i]+"</font><br>"+titles[i+1]+"<br>");
+            }
+        }
+    } else {
+	
+    if (xs && isNaN(xs) === true) {
         // was "i <= titles.length"
         for (var i = 0; i < titles.length; i++){
             // was "xs.indexOf(titles[i].toLowerCase())"
@@ -19,6 +31,7 @@ function doStuff() {
             }
         }
     }
+	}
     
     // this logic needs to be outside of loop
     if (found.length > 0) {
