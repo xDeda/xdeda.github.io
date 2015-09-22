@@ -2,24 +2,32 @@
 <html>
 <head>
 <script type="text/javascript">
-function validateForm(){
-
 var titles = ["0","Little Mouse", "1","Shaman Disciple", "2","Accomplished Shaman", "3","Shaman", "4","Shaman Master", "5","Greedy Mouse", "6","Here ! Cheese !", "7","Yeeeeah Cheese ^^", "8","Cheeeeeese *-*", "9","Fast Mouse", "10","Agile Mouse", "11","Pirate Mouse", "12","Ninja Mouse", "13","Inspired Shaman", "14","Shaman Champion", "15","Glorious Shaman", "16","Shaman Duchess", "17","Shaman Princess", "18","Shaman Empress", "19","Legendary Shaman", "20","Immortal Shaman", "21","The Chosen Shaman", "22","Holy Shaman", "23","Shaman Oracle", "24","Shaman Prophet", "25","Shamarvelous", "26","Glutton Mouse", "27","Gleany", "28","Plumpy Mouse", "29","Paunchy Mouse", "30","Chubby Mouse", "31","Fluffy Mouse", "32","Tubby Mouse", "33","The Chubby", "34","The Puffy", "35","Activist Mouse", "36","Unionized Mouse", "37","Mouse on Strike", "38","The Cheese Initiated", "39","The Cheese Adept", "40","The Cheese Priest", "41","The Reaper", "42","Rogue Mouse", "43","Looter", "44","Stalker", "45","Frothy Mouse", "46","The Silent", "47","Hawk Mouse", "48","Cobra Mouse", "49","Spidermouse", "50","Quick Silver", "51","Athletic Mouse", "52","Hasty Mouse", "53","Rocket Mouse", "54","Sonic The Mouse", "55","Pingless", "56","Kamikaze", "57","Warrior Mouse", "58","Mach 1", "59","Hunter", "60","First!", "61","Sniper", "62","Flash", "63","Supermouse", "64","Light Speed", "65","Time Traveler", "66","Fast Wind", "67","E=MouseC²", "68","Jumper", "69","The Untouchable", "70","Wall-Jumper", "72","Cheese Finder", "73","Cheese Knight", "74","Cheesegrubber", "75","Fatty", "76","Stout Mouse", "77","Cheese Lover", "78","Camembert", "79","Pont-L'Évêque", "80","Cheese Catcher", "81","It's Over 9000", "82","Collector", "83","Cheeseleader", "84","Cheese Thief", "85","Cheese Creator", "86","Cheese Pizza", "87","Cheese Minister", "88","Prodigy Mouse", "89","Princess Of Transformice", "90","Cheesoholic", "91","The Cheesen One", "92","Sailor Mouse", "94","Ancient Shaman", "95","Fearless Shaman", "96","Almighty Shaman", "97","Architect Shaman", "98","Mademoiselle", "99","Lady Chamane", "100","Loved", "101","Magician", "102","Hero of Mice", "103","Angel Shaman", "104","The Creator", "105","Absolute Shaman", "106","Miraculous Shaman", "107","Liberator", "108","Troll Shaman", "109","Ghost Shaman", "110","Spirit", "111","Demigoddess Shaman", "115","Nice Mouse", "116","Adorable Mouse", "117","Charming Mouse", "118","Pretty Mouse", "119","Cute Mouse", "120","Frivolous Mouse", "121","Snob Mouse", "122","Stylish Mouse", "123","Actress Mouse", "124","Fashion Mouse", "125","Sexy", "126","SuperStar", "127","Little Snowflake", "128","Christmas Spirit", "129","Little Pixie", "130","Santa Claus", "210","Alluring Mouse", "211","Temptress", "212","Latin Lover", "213","Decorator", "214","Builder", "215","Manufacturer", "231","Dynamite", "232","Speedmaster", "233","Whirlwind", "234","Om Nom Nom", "235","*-*", "240","Cookies", "241","Christmas Cake", "242","Whitebeard", "243","Generous", "244","Snowy", "245","Snowstorm", "249","Omelettovore", "250","My Cutie Pie", "253","Tonnerre de Brest", "254","Chocovore", "255","Chocobunny", "256","Rookie", "257","Neophyte", "258","Private", "259","Deft Mouse", "260","Solo Artist", "261","Corporal", "262","Accurate Mouse", "263","Bootcamper", "264","Sergeant", "265","Corner Jumper", "266","Skilled Mouse", "267","Lieutenant", "268","Longjumper", "269","Incredimouse", "270","Bootcamp Addict", "271","Captain", "272","Dexterous Mouse", "273","Maniac", "287","Vampire", "288","Snowball", "289","I'm cold", "290","Grilled Chestnut", "291","Chaussette", "292","Souris Sapin", "293","Cookies Eater", "295","Chicken", "296","Explorer", "297","Sardine", "298","Fishermouse", "300","Frankenmaus", "301","Candy *-*", "302","Pumpkin Juice", "303","Trick or Treat", "304","Poltergeist", "308","Candy Cane", "309","Fairy Lights", "317","Carnaval 2014", "320","Cock-a-doodle-doo", "321","Cocoa", "322","Egg hunter", "323","Childish Mouse", "324","Smart", "326","Mice's friend", "327","Professor", "328","Designer", "329","Mysterious", "330","Shamazing", "331","Cheese Detector", "332","The Brain", "335","What the Fish", "336","Fromagic", "337","Yeeehaaaa!", "338","Best Trainer", "339","All Aboard!", "340","herp derp", "341","Captain Nemouse", "342","Indiana Mouse", "343","Casper", "346","Zombie", "347","Vampire Slayer", "349","Sweet Tooth", "354","Christmas Savior", "355","Angry Mouse", "356","Caramel Duchess", "357","King's Pastry Chef", "359","Candy Lord", "360","Model Student", "362","Archaeologist Mouse", "365","Sans-culotte", "370","Namaste"];
 
-    var x=document.getElementById("fname").value;
+function doStuff() {
+	var x=document.getElementById("title").value;
 	var xs=x.toLowerCase();
-	
-    for(var i = 0; i <= titles.length; i++){	
-		
-		if(xs.indexOf(titles[i].toLowerCase()) != -1){
-			var titlenr = titles[i] - 1;
-            document.getElementById("command").innerHTML = "/title " + titles[i-1];
-            return;
-        }else{
-            document.getElementById("command").innerHTML = "no title like that fool";
+
+    var found = [];
+    if (xs) {
+        // was "i <= titles.length"
+        for (var i = 0; i < titles.length; i++){
+            // was "xs.indexOf(titles[i].toLowerCase())"
+            if (titles[i].toLowerCase().indexOf(xs) != -1){
+                // need to add items to list here
+                found.push("<font size=1>"+titles[i]+"</font><br> /title "+titles[i - 1]+"<br>");
+            }
         }
     }
+    
+    // this logic needs to be outside of loop
+    if (found.length > 0) {
+        document.getElementById("command").innerHTML = found.join("");
+    } else {
+        document.getElementById("command").innerHTML = "no title like that";
+    }
 }
+
 </script>
 <title>choose title</title>
 </head>
@@ -27,7 +35,7 @@ var titles = ["0","Little Mouse", "1","Shaman Disciple", "2","Accomplished Shama
 <h1>you all suck</h1>
 <p>and i don't suck because i'm awesome</p>
 <br>
-enter title: <input type="text" id="fname" onkeyup="return validateForm()">
+enter title: <input type="text" id="title" onkeyup="doStuff()" autocomplete="off">
 <br>
 <br>
 <div id="command"></div>
