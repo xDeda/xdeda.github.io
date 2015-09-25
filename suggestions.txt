@@ -12,3 +12,23 @@ joke titles -> levelup
 <<Evian Mouse>> /title 138
 
 hidden name messages -> epilepsy
+
+type "random", get random -> levelup
+
+links -> levelup
+transformice.com | creator's instagram | help | github repository
+
+hidden feature suggestions:
+comic sans
+amy's face
+bakpak picture
+
+suggestions i'll never get around to:
+
+themes
+
+brushups:
+move secret field
+fix annoying scrollbar
+remove "no title like that" message
+change input textfield so the "search for title" message is either inside it or above it
