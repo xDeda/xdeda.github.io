@@ -18,6 +18,13 @@ type "random", get random -> levelup
 links -> levelup
 transformice.com | creator's instagram | help | github repository
 
+random background colours:
+#C0CDFF
+#7AC0A2
+#FFE1E6
+#FFFCF9
+#FFFFE0
+
 hidden feature suggestions:
 comic sans
 amy's face
