@@ -24,11 +24,18 @@ body {
   flex: 1 1 auto;
   overflow-y: scroll;
   text-align: center;
-  margin:10 10 10 5;
+  margin-right: 5px;
+  padding-top: 10px;
+}
+
+.secret {
+  font-size: 20px;
+  font-style: italic;
 }
 
 .box .row.footer {
   flex: 0 0 60px;
+  padding: 10px;
   text-align: center;
 }
 /* Let's get this party started */

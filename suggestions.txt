@@ -8,22 +8,17 @@ facebook page for ultimate likes -> levelup
 
 see full list -> levelup
 
-joke titles -> levelup
-<<Evian Mouse>> /title 138
+joke titles -> levelup (NEED MORE)
+<<Evian Mouse>> /title 138 (already in)
 
 hidden name messages -> epilepsy
 
 type "random", get random -> levelup
 
-links -> levelup
+links -> levelup (implemented)
 transformice.com | creator's instagram | help | github repository
 
-random background colours:
-#C0CDFF
-#7AC0A2
-#FFE1E6
-#FFFCF9
-#FFFFE0
+random background colours (implemented)
 
 hidden feature suggestions:
 comic sans
