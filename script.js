@@ -1,9 +1,3 @@
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-68128014-1', 'auto');
-ga('send', 'pageview');
 var bgcolorlist = ["#FFD3D3", "#FFE7D3", "#C9F3F3", "#CEF9CE","#C5B8FB","#9FFD9F","#81E2E2","#CD9EDC","#FFF89E","#DC8172","#FDECAD","#F58095","#D29AEF","#9C90FF","#73ADDE","#BEFBC5","#FDBE68"];
 var bgcolor = Math.floor(Math.random()*bgcolorlist.length);
 eval(atob('dmFyIHNuID0gWyJiZ28/Pz8iLCJiYWtwYW9mZ3VueiIsImxvdmUgdSBiYWJ5Iiwic2Fya2F6bSIsImhlcmUncyB0aGF0IHRoaW5nIHlvdSB3YW50ZWQsIGVwaSIsImVwaWxlcHNpIiwiaGV5IHRoZXJlLCBiZXN0YSA7LSkiLCJ3b3Jzbm9wbG92ZXIiLCJ3aG9hIHdob2Egd2hvYSB3aG9hIHdob2Egd2hvYSB3aG9hISA6LSkgaHVncyIsImltYWdpbmlzdCIsImQgZSBkIGEgbSBhIGQgZSB0IGggaSBzIiwiZGVkYSIsIm15IGZhdm91cml0ZSBub3J3ZWdpYW4hISEiLCJlbGl6YWxvdmUiLCJ5b3UgbWFrZSBtZSBkcmVhbSBvZiBidXR0ZXJmbHkgdmFsbGV5LCBteSBzd2VldGVzdCBsb3ZlIiwibWFja3N0YXIiLCJvbWcgaXQncyB0aGUgPGI+Q0hJRUYgQkVFRiBMT0NPPC9iPiIsInNpbm53aWRyaWciLCJ3ZSdsbCBzcGxpdCB0aGUgcHJvZml0cyA5NS81IiwibWlubm1hIiwiaGkgOi0tKSIsInVua25vd25jbGF3cyIsIm15IHN3ZWV0ZXN0IGFyY2hhZW9sb2dpc3QgPDMiLCJmYXJ0YmFsbGluZyIsImRlbHRyb3R0ZXIiLCJkZWV0ZWEiLCJkdSBlciBhbHRz5SBmdWNraW5nIG5pY2UiLCJmYXRieW1lYXQiLCJvLyIsImZsaW5ueWZsb3AiLCJqYWNvYiwgbXkgZGVhcmVzdCA6LSkiLCJqYWNvYm1vb2QiLCJraXNzZXMgdG8geW91IiwibGV2ZWx1cCIsIm1lIGd1c3RhcyB0dSA6LSkiLCJtYXJhY2hhb3QiLCJpIHN0aWxsIGxvdmUgdSIsIm1lcmNlcmxlcmIiLCJmcmllbmQhIiwibWluYXJ5dSIsImxpYmVydGFyaWFuaXNtIHN1Y2tzIGFzcyBkdWRlIiwibmlja25pa28iLCJpIHN3ZWFyIGknbSBnb25uYSBnZXQgYm9ybiBieSBhIHdhdGVyYmVkIHNvbWUgZGF5Iiwic3Vuc2hpcCIsInRoZSB5dW5nIHRhaHNlZW5icm8gdGhvIiwidGFoc2VlbnBybyIsInNhdCBzaXJpIGFrYWwgbGFkISIsInRodW5kZXJhaSIsImdldCBvbiB5b3VyIG1haW4gbG9sIiwicHJvcmFpIiwibWlya28gbXkgbWFpbiBtYW5nbyBtb3JuaW5nIG1hbiEiLCJsYXphYXIiLCJ5b3UncmUgaG9uZXN0bHkgbm90IGV2aWwgOnAiLCJpbmZpbml0ZWhhdGUiXTs='));
@@ -47,3 +41,11 @@ function doStuff() {
 	eval(atob('CWlmICh4cyAmJiBpc05hTih4cykgPT09IHRydWUpIHsKCQlmb3IgKHZhciBpID0gMDsgaSA8IHNuLmxlbmd0aDsgaSsrKXsKCQkJaWYgKHhzID09IHNuW2ldKXsKCQkJCXNtID0gc25baS0xXTsKCQkJfQoJCX0KCX0KCglpZiAoc20pIHsKICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgic2VjcmV0IikuaW5uZXJIVE1MID0gc207CiAgICB9IGVsc2UgewogICAgICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJzZWNyZXQiKS5pbm5lckhUTUwgPSAiIjsKICAgIH0='));
 	
 }
+/*
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-68128014-1', 'auto');
+ga('send', 'pageview');
+*/

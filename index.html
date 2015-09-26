@@ -1,31 +1,29 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html><head>
 <link rel="stylesheet" href="style.css">
-  <title>choose title</title>
+<title>TFM Title Chooser</title>
 </head>
-<body onload="doBG();doStuff()">
-
-  <div class="box">
-  
-    <div class="header">
-	
-      <img src="https://cloud.githubusercontent.com/assets/4290245/10098526/56cdcca6-6382-11e5-8f68-430dd541b611.png" title="Jacobmood drawing skills :-)">
-	  <br>
-      <br>
-      enter title: <input autocomplete="off" id="title" onkeyup="doStuff()" type="text">
-	  <br>
-    </div>
-	
-	<div id="command">
+<body onload="doBG();">
+<div class="box">
+  <div class="row header">
+    <img src="https://cloud.githubusercontent.com/assets/4290245/10098526/56cdcca6-6382-11e5-8f68-430dd541b611.png" title="Jacobmood drawing skills :-)">
+	<br>
+    enter title: <input autocomplete="off" id="title" onkeyup="doStuff()" type="text">
+	<br>
+  </div>
+  <div class="row content">
+    <p>
+      <div id="command">
       <!-- content -->
-	</div>
-
+	  </div>
+    </p>
+  </div>
+  <div class="row footer">
     <div class="footer">
       <div id="secret"></div><br>
+	  <div id="links">transformice.com | creator's instagram | help | github repository</div>
     </div>
-
   </div>
+</div>
 <script src="script.js"></script>
-</body>
-</html>
+</body></html>
