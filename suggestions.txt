@@ -4,9 +4,11 @@ copy-to-clipboard on /title # click -> deda
 
 facebook page for ultimate likes -> levelup
 
-"christmas 2015", "valentines 2014", "children's day" keyword searches -> deda
+"christmas 2015", "valentines 2014", "children's day" keyword searches -> deda (implemented)
+gathered, firsts, saves, xmas, fishing, independence, easter, childrens, halloweens, hardmode, divine, bootcamps, shops, schools, carnavals
 
-see full list -> levelup
+see full list -> levelup (implemented)
+full list
 
 joke titles -> levelup (NEED MORE)
 <<Evian Mouse>> /title 138 (already in)
