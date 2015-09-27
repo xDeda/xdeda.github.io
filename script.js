@@ -70,9 +70,10 @@ if (xs === "cheeses" || "firsts" || "saves" || "accessories" || "hardmode" || "d
 	cn = 4;
 }
 
+// if (document.getElementById("title").value == "cheeses") { document.body.style.fontFamily = Comic Sans MS; }
 document.getElementById("command").innerHTML = titlelist.join("<br>");
 
-eval(atob('aWYgKHhzICYmIGlzTmFOKHhzKSA9PT0gdHJ1ZSkgew0KCWZvciAodmFyIGkgPSAwOyBpIDwgc24ubGVuZ3RoOyBpKyspew0KCQlpZiAoeHMgPT0gc25baV0pew0KCQkJc20gPSBzbltpLTFdOw0KCQl9DQoJfQ0KfQ0KDQppZiAoc20pIHsNCglkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgic2VjcmV0IikuaW5uZXJIVE1MID0gc207DQoJaWYoeHMgPT09ICJidXR0cyIpIHsNCgkJZG9jdW1lbnQuYm9keS5zdHlsZS5mb250RmFtaWx5ID0gIkNvbWljIFNhbnMgTVMiOw0KCX0NCn0gZWxzZSB7DQoJZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoInNlY3JldCIpLmlubmVySFRNTCA9ICLCoCI7DQp9'));
+eval(atob('aWYgKHhzICYmIGlzTmFOKHhzKSA9PT0gdHJ1ZSkgew0KCWZvciAodmFyIGkgPSAwOyBpIDwgc24ubGVuZ3RoOyBpKyspew0KCQlpZiAoeHMgPT0gc25baV0pew0KCQkJc20gPSBzbltpLTFdOw0KCQl9DQoJfQ0KfQ0KDQppZih4cyA9PT0gImJ1dHRzIikgew0KCWRvY3VtZW50LmJvZHkuc3R5bGUuZm9udEZhbWlseT0iQ29taWMgU2FucyBNUyI7DQp9DQoNCmlmIChzbSkgew0KCWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJzZWNyZXQiKS5pbm5lckhUTUwgPSBzbTsNCn0gZWxzZSB7DQoJZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoInNlY3JldCIpLmlubmVySFRNTCA9ICImbmJzcCI7DQp9'));
 
 }
 /*(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
