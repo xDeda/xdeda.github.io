@@ -5,6 +5,31 @@ body {
   font-family: georgia;
 }
 
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to { 
+    -webkit-transform: rotate(359deg);
+  }
+}
+#amy img
+{
+    -webkit-animation-name: rotate;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
+
+#title {
+	font-size: 20px;
+}
+
+.secret {
+  font-size: 20px;
+  font-style: italic;
+}	
+	
 .box {
   display: flex;
   flex-flow: column;
@@ -25,15 +50,6 @@ body {
   overflow-y: scroll;
   text-align: center;
   margin-right: 5px;
-}
-
-#title {
-	font-size: 20px;
-}
-
-.secret {
-  font-size: 20px;
-  font-style: italic;
 }
 
 .box .row.footer {
