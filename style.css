@@ -20,6 +20,10 @@ body {
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
 }
+#amy img:hover
+{
+    -webkit-animation-duration: 1s;
+}
 
 #title {
 	font-size: 20px;
