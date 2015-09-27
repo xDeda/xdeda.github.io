@@ -1,272 +1,79 @@
 var bgcolorlist = ["#FFD3D3", "#FFE7D3", "#C9F3F3", "#CEF9CE","#C5B8FB","#9FFD9F","#81E2E2","#CD9EDC","#FFF89E","#DC8172","#FDECAD","#F58095","#D29AEF","#9C90FF","#73ADDE","#BEFBC5","#FDBE68"];
 var bgcolor = Math.floor(Math.random()*bgcolorlist.length);
 eval(atob('dmFyIHNuID0gWyJiZ28/Pz8iLCJiYWtwYW9mZ3VueiIsImxvdmUgdSBiYWJ5Iiwic2Fya2F6bSIsImhlcmUncyB0aGF0IHRoaW5nIHlvdSB3YW50ZWQsIGVwaSIsImVwaWxlcHNpIiwiaGV5IHRoZXJlLCBiZXN0YSA7LSkiLCJ3b3Jzbm9wbG92ZXIiLCJ3aG9hIHdob2Egd2hvYSB3aG9hIHdob2Egd2hvYSB3aG9hISA6LSkgaHVncyIsImltYWdpbmlzdCIsImQgZSBkIGEgbSBhIGQgZSB0IGggaSBzIiwiZGVkYSIsIm15IGZhdm91cml0ZSBub3J3ZWdpYW4hISEiLCJlbGl6YWxvdmUiLCJ5b3UgbWFrZSBtZSBkcmVhbSBvZiBidXR0ZXJmbHkgdmFsbGV5LCBteSBzd2VldGVzdCBsb3ZlIiwibWFja3N0YXIiLCJvbWcgaXQncyB0aGUgPGI+Q0hJRUYgQkVFRiBMT0NPPC9iPiIsInNpbm53aWRyaWciLCJ3ZSdsbCBzcGxpdCB0aGUgcHJvZml0cyA5NS81IiwibWlubm1hIiwiaGkgOi0tKSIsInVua25vd25jbGF3cyIsIm15IHN3ZWV0ZXN0IGFyY2hhZW9sb2dpc3QgPDMiLCJmYXJ0YmFsbGluZyIsImRlbHRyb3R0ZXIiLCJkZWV0ZWEiLCJkdSBlciBhbHRz5SBmdWNraW5nIG5pY2UiLCJmYXRieW1lYXQiLCJvLyIsImZsaW5ueWZsb3AiLCJqYWNvYiwgbXkgZGVhcmVzdCA6LSkiLCJqYWNvYm1vb2QiLCJraXNzZXMgdG8geW91IiwibGV2ZWx1cCIsIm1lIGd1c3RhcyB0dSA6LSkiLCJtYXJhY2hhb3QiLCJpIHN0aWxsIGxvdmUgdSIsIm1lcmNlcmxlcmIiLCJmcmllbmQhIiwibWluYXJ5dSIsImxpYmVydGFyaWFuaXNtIHN1Y2tzIGFzcyBkdWRlIiwibmlja25pa28iLCJpIHN3ZWFyIGknbSBnb25uYSBnZXQgYm9ybiBieSBhIHdhdGVyYmVkIHNvbWUgZGF5Iiwic3Vuc2hpcCIsInRoZSB5dW5nIHRhaHNlZW5icm8gdGhvIiwidGFoc2VlbnBybyIsInNhdCBzaXJpIGFrYWwgbGFkISIsInRodW5kZXJhaSIsImdldCBvbiB5b3VyIG1haW4gbG9sIiwicHJvcmFpIiwibWlya28gbXkgbWFpbiBtYW5nbyBtb3JuaW5nIG1hbiEiLCJsYXphYXIiLCJ5b3UncmUgaG9uZXN0bHkgbm90IGV2aWwgOnAiLCJpbmZpbml0ZWhhdGUiXTs='));
-var titles = ["0","Little Mouse","1","Shaman Disciple","2","Accomplished Shaman","3","Shaman","4","Shaman Master","5","Greedy Mouse","6","Here ! Cheese !","7","Yeeeeah Cheese ^^","8","Cheeeeeese *-*","9","Fast Mouse","10","Agile Mouse","11","Pirate Mouse","12","Ninja Mouse","13","Inspired Shaman","14","Shaman Champion","15","Glorious Shaman","16","Shaman Duchess","17","Shaman Princess","18","Shaman Empress","19","Legendary Shaman","20","Immortal Shaman","21","The Chosen Shaman","22","Holy Shaman","23","Shaman Oracle","24","Shaman Prophet","25","Shamarvelous","26","Glutton Mouse","27","Gleany","28","Plumpy Mouse","29","Paunchy Mouse","30","Chubby Mouse","31","Fluffy Mouse","32","Tubby Mouse","33","The Chubby","34","The Puffy","35","Activist Mouse","36","Unionized Mouse","37","Mouse on Strike","38","The Cheese Initiated","39","The Cheese Adept","40","The Cheese Priest","41","The Reaper","42","Rogue Mouse","43","Looter","44","Stalker","45","Frothy Mouse","46","The Silent","47","Hawk Mouse","48","Cobra Mouse","49","Spidermouse","50","Quick Silver","51","Athletic Mouse","52","Hasty Mouse","53","Rocket Mouse","54","Sonic The Mouse","55","Pingless","56","Kamikaze","57","Warrior Mouse","58","Mach 1","59","Hunter","60","First!","61","Sniper","62","Flash","63","Supermouse","64","Light Speed","65","Time Traveler","66","Fast Wind","67","E=MouseC²","68","Jumper","69","The Untouchable","70","Wall-Jumper","71","LIGHTNING","72","Cheese Finder","73","Cheese Knight","74","Cheesegrubber","75","Fatty","76","Stout Mouse","77","Cheese Lover","78","Camembert","79","Pont-L'Évêque","80","Cheese Catcher","81","It's Over 9000","82","Collector","83","Cheeseleader","84","Cheese Thief","85","Cheese Creator","86","Cheese Pizza","87","Cheese Minister","88","Prodigy Mouse","89","Princess Of Transformice","90","Cheesoholic","91","The Cheesen One","92","Sailor Mouse","93","MAH CHEESE!","94","Ancient Shaman","95","Fearless Shaman","96","Almighty Shaman","97","Architect Shaman","98","Mademoiselle","99","Lady Chamane","100","Loved","101","Magician","102","Hero of Mice","103","Angel Shaman","104","The Creator","105","Absolute Shaman","106","Miraculous Shaman","107","Liberator","108","Troll Shaman","109","Ghost Shaman","110","Spirit","111","Demigoddess Shaman","112","Last Hope","113","Redeemer","114","Alpha & Omega","115","Nice Mouse","116","Adorable Mouse","117","Charming Mouse","118","Pretty Mouse","119","Cute Mouse","120","Frivolous Mouse","121","Snob Mouse","122","Stylish Mouse","123","Actress Mouse","124","Fashion Mouse","125","Sexy","126","SuperStar","127","Little Snowflake","128","Christmas Spirit","129","Little Pixie","130","Santa Claus","138","Evian Mouse","200","Goddess Shaman","202","The Wind Master","210","Alluring Mouse ","211","Temptress","212","Latin Lover","213","Decorator","214","Builder","215","Manufacturer","216","Technician","217","Mechanic","218","Specialist","219","Inventor","220","Engineer","221","Inventive Mouse","222","Ingenious Mouse","223","Virtuoso","224","Sprinter","225","Batmouse","226","The Unseen","227","Unstoppable","228","¡Ándale! ¡Ándale!","229","Torpedo","230","Speedy Gorgonzola","231","Dynamite","232","Speedmaster","233","Whirlwind","234","Om Nom Nom","235","*-*","236","Cheese Addict","237","Cheesus","238","Queen of Cheese","240","Cookies","241","Christmas Cake","242","Whitebeard","243","Generous","244","Snowy","245","Snowstorm","246","Dauphine","247","Foxy","248","Miss Transformice","249","Omelettovore","250","My Cutie Pie","251","252","Souris Lilloise","Fiancée","253","Tonnerre de Brest","254","Chocovore","255","Chocobunny","256","Rookie","257","Neophyte","258","Private","259","Deft Mouse","260","Solo Artist","261","Corporal","262","Accurate Mouse","263","Bootcamper","264","Sergeant","265","Corner Jumper","266","Skilled Mouse","267","Lieutenant","268","Longjumper","269","Incredimouse","270","Bootcamp Addict","271","Captain","272","Dexterous Mouse","273","Maniac","274","Major","275","Cheese Artist","276","Acrobat","277","Colonel","278","Shortcutter","279","Tarzan","280","General","281","Living Legend","282","Stuntmouse","283","Pro","284","Chuck Souris","285","Queen of Bootcamp","286","Gravity Master","287","Vampire","288","Snowball","289","I'm cold","290","Grilled Chestnut","291","Chaussette","292","Souris Sapin","293","Cookies Eater","294","I Cheese You","295","Chicken","296","Explorer","297","Sardine","298","Fishermouse","299","Adorer","300","Frankenmaus","301","Candy *-*","302","Pumpkin Juice","303","Trick or Treat","304","Poltergeist","305","Halloween 2012","306","Halloween 2013","307","Von Drekkemaus","308","Candy Cane","309","Fairy Lights","310","Papaille Noel","311","Elfette","312","Snow Angel","313","Just Married","314","Candy Apple","315","Broken Heart","316","Honeymoon","317","Carnaval 2014","318","Churros","319","Partygoer","320","Cock-a-doodle-doo","321","Cocoa","322","Egg hunter","323","Childish Mouse","324","Smart","326","Mice's friend","327","Professor","328","Designer","329","Mysterious","330","Shamazing","331","Cheese Detector","332","The Brain","333","Majestic","334","Divinity","335","What the Fish","336","Fromagic","337","Yeeehaaaa!","338","Best Trainer","339","All Aboard!","340","herp derp","341","Captain Nemouse","342","Indiana Mouse","343","Casper","344","Pumpkin Pie","345","Ghostbuster","346","Zombie","347","Vampire Slayer","348","Spooky","349","Sweet Tooth","350","Wintry","351","Gingerbread","352","Polar Mouse","353","Big Turkey","354","Christmas Savior","355","Angry Mouse","356","Caramel Duchess","357","King's Pastry Chef","358","Cake Face","359","Candy Lord","360","Model Student","361","Dora the Explorer","362","Archaeologist Mouse","363","Allan Quatermouse","364","Patriotic","365","Sans-culotte","366","Dunce","367","First in the Class","368","Bookmouse","369","Academician","370","Namaste","440","Fromadmin","442","Sourigami","444","La Belette","445","El Pinolero","447","Kikoo Admin","448","Queijadinha","446","Dehset Admin","449","La Goulue","450","Souris Électrique","451","Gold Saint"];
-
-var gathered = ["Little Mouse","Greedy Mouse","Here ! Cheese !","Yeeeeah Cheese ^^","Cheeeeeese *-*","Activist Mouse","Unionized Mouse","Mouse on Strike","Glutton Mouse","Gleany","Plumpy Mouse","Paunchy Mouse","Chubby Mouse","Fluffy Mouse","Tubby Mouse","The Chubby","The Puffy","The Cheese Initiated","The Cheese Adept","The Cheese Priest","The Reaper","Cheese Finder","Cheese Knight","Cheesegrubber","Fatty","Stout Mouse","Cheese Lover","Camembert","Pont-L'Évêque","Cheese Catcher","It's Over 9000","Collector","Cheeseleader","Cheese Thief","Cheese Creator","Cheese Pizza","Cheese Minister","Prodigy Mouse","Princess Of Transformice","Cheesoholic","The Cheesen One","Sailor Mouse","Om Nom Nom","*-*","Cheese Addict","Cheesus","Queen of Cheese","MAH CHEESE!"]
-
-var firsts = ["Fast Mouse","Agile Mouse","Pirate Mouse","Ninja Mouse","Rogue Mouse","Looter","Stalker","Frothy Mouse","The Silent","Hawk Mouse","Cobra Mouse","Spidermouse","Quick Silver","Athletic Mouse","Hasty Mouse","Rocket Mouse","Sonic The Mouse","Pingless","Kamikaze","Warrior Mouse","Mach 1","Hunter","First!","Sniper","Flash","Supermouse","Light Speed","Time Traveler","Fast Wind","E=MouseC²","Jumper","The Untouchable","Dynamite","Speedmaster","Whirlwind","Wall-Jumper","Sprinter","Batmouse","The Unseen","Unstoppable","The Wind Master","¡Ándale! ¡Ándale!","Torpedo","Speedy Gorgonzola","LIGHTNING"];
-
-var saves = ["Shaman Disciple","Accomplished Shaman","Shaman","Shaman Master","Inspired Shaman","Shaman Champion","Glorious Shaman","Shaman Duchess","Shaman Princess","Shaman Empress","Legendary Shaman","Immortal Shaman","The Chosen Shaman","Holy Shaman","Shaman Oracle","Shaman Prophet","Shamarvelous","Ancient Shaman","Fearless Shaman","Almight Shaman","Architect Shaman","Mademoiselle","Lady Chamane","Loved","Magician","Hero of Mice","Angel Shaman","The Creator","Absolute Shaman","Miraculous Shaman","Liberator","Troll Shaman","Ghost Shaman","Spirit","Demigoddess Shaman","Last Hope","Redeemer","Goddess Shaman","Alpha & Omega"];
-
-var christmas = ["Gingerbread","Wintry","Polar Mouse","Big Turkey","Christmas Savior","Candy Cane","Fairy Lights","Papaille Noel","Elfette","Snow Angel","Snowball","I'm cold","Grilled Chestnut","Chaussette","Souris Sapin","Cookies Eater","Little Snowflake","Christmas Spirit","Little Pixie","Santa Claus","Cookies","Christmas Cake","Whitebeard","Generous","Snowy","Snowstorm"];
-
-var fishing = ["Explorer","Sardine","Fishermouse","Adorer","Best Trainer","Indiana Mouse","What the Fish","Fromagic","Yeeehaaaa!","herp derp","Captain Nemouse","Dora the Explorer","Archeologist Mouse","Allan Quatermouse"];
-
-var independence = ["Namaste","Patriotic","Sans-culotte"];
-
-var easter = ["Chocovore","Chocobunny","Cocoa","Cock-a-doodle-doo","Chicken","Egg hunter","Angry Mouse","King's Pastry Chef","Caramel Duchess","Candy Lord","Cake Face"];
-
-var childrens = ["Childish Mouse","Model Student"];
-
-var halloweens = ["Casper","Pumpkin Pie","Ghostbuster","Zombie","Vampire Slayer","Spooky","Sweet Tooth","Vampire","Frankenmaus","Bonbon *-*","Pumpkin Juice","Trick or Treats","Poltergeist","Halloween 2012","Halloween 2013","Von Drekkemaus"];
-
-var gathered2 = [];
-var firsts2 = [];
-var saves2 = [];
-var christmas2 = [];
-var fishing2 = [];
-var independence2 = [];
-var easter2 = [];
-var childrens2 = [];
-var halloweens2 = [];
-var hardmode = titles.slice(titles.indexOf("213"), titles.indexOf("Virtuoso")+1);
-var divine = titles.slice(titles.indexOf("324"), titles.indexOf("Divinity")+1);
-var bootcamps = titles.slice(titles.indexOf("256"), titles.indexOf("Gravity Master")+1);
-var shops = titles.slice(titles.indexOf("115"), titles.indexOf("SuperStar")+1);
-var schools = titles.slice(titles.indexOf("366"), titles.indexOf("Academician")+1);
-var carnevals = titles.slice(titles.indexOf("317"), titles.indexOf("Partygoer")+1);
-
-for (var i = 0; i < titles.length; i++) {
-	if(titles.indexOf(gathered[i]) != -1) {
-		gathered2.push(titles[titles.indexOf(gathered[i])-1]);
-		gathered2.push(gathered[i]);
-	}
-	if(titles.indexOf(firsts[i]) != -1) {
-		firsts2.push(titles[titles.indexOf(firsts[i])-1]);
-		firsts2.push(firsts[i]);
-	}
-	if(titles.indexOf(saves[i]) != -1) {
-		saves2.push(titles[titles.indexOf(saves[i])-1]);
-		saves2.push(saves[i]);
-	}
-	if(titles.indexOf(christmas[i]) != -1) {
-		christmas2.push(titles[titles.indexOf(christmas[i])-1]);
-		christmas2.push(christmas[i]);
-	}
-	if(titles.indexOf(fishing[i]) != -1) {
-		fishing2.push(titles[titles.indexOf(fishing[i])-1]);
-		fishing2.push(fishing[i]);
-	}
-	if(titles.indexOf(independence[i]) != -1) {
-		independence2.push(titles[titles.indexOf(independence[i])-1]);
-		independence2.push(independence[i]);
-	}
-	if(titles.indexOf(easter[i]) != -1) {
-		easter2.push(titles[titles.indexOf(easter[i])-1]);
-		easter2.push(easter[i]);
-	}
-	if(titles.indexOf(childrens[i]) != -1) {
-		childrens2.push(titles[titles.indexOf(childrens[i])-1]);
-		childrens2.push(childrens[i]);
-	}
-	if(titles.indexOf(halloweens[i]) != -1) {
-		halloweens2.push(titles[titles.indexOf(halloweens[i])-1]);
-		halloweens2.push(halloweens[i]);
-	}
-}
-
+var titles=[{key:"0",title:"Little Mouse",type:"cheeses",htg:"0"},{key:"1",title:"Shaman Disciple",type:"saves",htg:"10"},{key:"2",title:"Accomplished Shaman",type:"saves",htg:"100"},{key:"3",title:"Shaman",type:"saves",htg:"1000"},{key:"4",title:"Shaman Master",type:"saves",htg:"2000"},{key:"5",title:"Greedy Mouse",type:"cheeses",htg:"5"},{key:"6",title:"Here ! !",type:"cheeses",htg:"20"},{key:"7",title:"Yeeeeah ^^",type:"cheeses",htg:"100"},{key:"8",title:"Cheeeeeese *-*",type:"cheeses",htg:"200"},{key:"9",title:"Fast Mouse",type:"firsts",htg:"1"},{key:"10",title:"Agile Mouse",type:"firsts",htg:"10"},{key:"11",title:"Pirate Mouse",type:"firsts",htg:"100"},{key:"12",title:"Ninja Mouse",type:"firsts",htg:"200"},{key:"13",title:"Inspired Shaman",type:"saves",htg:"3000"},{key:"14",title:"Shaman Champion",type:"saves",htg:"4000"},{key:"15",title:"Glorious Shaman",type:"saves",htg:"5000"},{key:"16",title:"Shaman Duchess",type:"saves",htg:"6000"},{key:"17",title:"Shaman Princess",type:"saves",htg:"7000"},{key:"18",title:"Shaman Empress",type:"saves",htg:"8000"},{key:"19",title:"Legendary Shaman",type:"saves",htg:"9000"},{key:"20",title:"Immortal Shaman",type:"saves",htg:"10000"},{key:"21",title:"The Chosen Shaman",type:"saves",htg:"11000"},{key:"22",title:"Holy Shaman",type:"saves",htg:"12000"},{key:"23",title:"Shaman Oracle",type:"saves",htg:"13000"},{key:"24",title:"Shaman Prophet",type:"saves",htg:"14000"},{key:"25",title:"Shamarvelous",type:"saves",htg:"15000"},{key:"26",title:"Glutton Mouse",type:"cheeses",htg:"600"},{key:"27",title:"Gleany",type:"cheeses",htg:"700"},{key:"28",title:"Plumpy Mouse",type:"cheeses",htg:"800"},{key:"29",title:"Paunchy Mouse",type:"cheeses",htg:"900"},{key:"30",title:"Chubby Mouse",type:"cheeses",htg:"1000"},{key:"31",title:"Fluffy Mouse",type:"cheeses",htg:"1100"},{key:"32",title:"Tubby Mouse",type:"cheeses",htg:"1200"},{key:"33",title:"The Chubby",type:"cheeses",htg:"1300"},{key:"34",title:"The Puffy",type:"cheeses",htg:"1400"},{key:"35",title:"Activist Mouse",type:"cheeses",htg:"300"},{key:"36",title:"Unionized Mouse",type:"cheeses",htg:"400"},{key:"37",title:"Mouse on Strike",type:"cheeses",htg:"500"},{key:"38",title:"The Initiated",type:"cheeses",htg:"1500"},{key:"39",title:"The Adept",type:"cheeses",htg:"1600"},{key:"40",title:"The Priest",type:"cheeses",htg:"1700"},{key:"41",title:"The Reaper",type:"cheeses",htg:"1800"},{key:"42",title:"Rogue Mouse",type:"firsts",htg:"300"},{key:"43",title:"Looter",type:"firsts",htg:"400"},{key:"44",title:"Stalker",type:"firsts",htg:"500"},{key:"45",title:"Frothy Mouse",type:"firsts",htg:"600"},{key:"46",title:"The Silent",type:"firsts",htg:"700"},{key:"47",title:"Hawk Mouse",type:"firsts",htg:"800"},{key:"48",title:"Cobra Mouse",type:"firsts",htg:"900"},{key:"49",title:"Spidermouse",type:"firsts",htg:"1000"},{key:"50",title:"Quick Silver",type:"firsts",htg:"1100"},{key:"51",title:"Athletic Mouse",type:"firsts",htg:"1200"},{key:"52",title:"Hasty Mouse",type:"firsts",htg:"1400"},{key:"53",title:"Rocket Mouse",type:"firsts",htg:"1600"},{key:"54",title:"Sonic The Mouse",type:"firsts",htg:"1800"},{key:"55",title:"Pingless",type:"firsts",htg:"2000"},{key:"56",title:"Kamikaze",type:"firsts",htg:"2200"},{key:"57",title:"Warrior Mouse",type:"firsts",htg:"2400"},{key:"58",title:"Mach 1",type:"firsts",htg:"2600"},{key:"59",title:"Hunter",type:"firsts",htg:"2800"},{key:"60",title:"First!",type:"firsts",htg:"3000"},{key:"61",title:"Sniper",type:"firsts",htg:"3200"},{key:"62",title:"Flash",type:"firsts",htg:"3400"},{key:"63",title:"Supermouse",type:"firsts",htg:"3600"},{key:"64",title:"Light Speed",type:"firsts",htg:"3800"},{key:"65",title:"Time Traveler",type:"firsts",htg:"4000"},{key:"66",title:"Fast Wind",type:"firsts",htg:"4500"},{key:"67",title:"E=MouseC²",type:"firsts",htg:"5000"},{key:"68",title:"Jumper",type:"firsts",htg:"5500"},{key:"69",title:"The Untouchable",type:"firsts",htg:"6000"},{key:"70",title:"Wall-Jumper",type:"firsts",htg:"10000"},{key:"71",title:"LIGHTNING",type:"firsts",htg:"40000"},{key:"72",title:"Cheese Finder",type:"cheeses",htg:"2000"},{key:"73",title:"Cheese Knight",type:"cheeses",htg:"2300"},{key:"74",title:"Cheesegrubber",type:"cheeses",htg:"2700"},{key:"75",title:"Fatty",type:"cheeses",htg:"3200"},{key:"76",title:"Stout Mouse",type:"cheeses",htg:"3800"},{key:"77",title:"Cheese Lover",type:"cheeses",htg:"4600"},{key:"78",title:"Camembert",type:"cheeses",htg:"6000"},{key:"79",title:"Pont-L'Évêque",type:"cheeses",htg:"7000"},{key:"80",title:"Cheese Catcher",type:"cheeses",htg:"8000"},{key:"81",title:"It's Over 9000",type:"cheeses",htg:"9001"},{key:"82",title:"Collector",type:"cheeses",htg:"10000"},{key:"83",title:"Cheeseleader",type:"cheeses",htg:"14000"},{key:"84",title:"Cheese Thief",type:"cheeses",htg:"18000"},{key:"85",title:"Cheese Creator",type:"cheeses",htg:"22000"},{key:"86",title:"Cheese Pizza",type:"cheeses",htg:"26000"},{key:"87",title:"Cheese Minister",type:"cheeses",htg:"30000"},{key:"88",title:"Prodigy Mouse",type:"cheeses",htg:"34000"},{key:"89",title:"Princess Of Transformice",type:"cheeses",htg:"38000"},{key:"90",title:"Cheesoholic",type:"cheeses",htg:"42000"},{key:"91",title:"Then One",type:"cheeses",htg:"46000"},{key:"92",title:"Sailor Mouse",type:"cheeses",htg:"50000"},{key:"93",title:"MAH CHEESE!",type:"cheeses",htg:"80000"},{key:"94",title:"Ancient Shaman",type:"saves",htg:"16000"},{key:"95",title:"Fearless Shaman",type:"saves",htg:"18000"},{key:"96",title:"Almighty Shaman",type:"saves",htg:"20000"},{key:"97",title:"Architect Shaman",type:"saves",htg:"22000"},{key:"98",title:"Mademoiselle",type:"saves",htg:"24000"},{key:"99",title:"Lady Chamane",type:"saves",htg:"26000"},{key:"100",title:"Loved",type:"saves",htg:"28000"},{key:"101",title:"Magician",type:"saves",htg:"30000"},{key:"102",title:"Hero of",type:"saves",htg:"35000"},{key:"103",title:"Angel Shaman",type:"saves",htg:"40000"},{key:"104",title:"The Creator",type:"saves",htg:"45000"},{key:"105",title:"Absolute Shaman",type:"saves",htg:"50000"},{key:"106",title:"Miraculous Shaman",type:"saves",htg:"55000"},{key:"107",title:"Liberator",type:"saves",htg:"60000"},{key:"108",title:"Troll Shaman",type:"saves",htg:"65000"},{key:"109",title:"Ghost Shaman",type:"saves",htg:"70000"},{key:"110",title:"Spirit",type:"saves",htg:"75000"},{key:"111",title:"Demigoddess Shaman",type:"saves",htg:"80000"},{key:"112",title:"Last Hope",type:"saves",htg:"85000"},{key:"113",title:"Redeemer",type:"saves",htg:"90000"},{key:"114",title:"Alpha & Omega",type:"saves",htg:"140000"},{key:"115",title:"Nice Mouse",type:"accessories",htg:"1"},{key:"116",title:"Adorable Mouse",type:"accessories",htg:"2"},{key:"117",title:"Charming Mouse",type:"accessories",htg:"5"},{key:"118",title:"Pretty Mouse",type:"accessories",htg:"10"},{key:"119",title:"Cute Mouse",type:"accessories",htg:"15"},{key:"120",title:"Frivolous Mouse",type:"accessories",htg:"20"},{key:"121",title:"Snob Mouse",type:"accessories",htg:"25"},{key:"122",title:"Stylish Mouse",type:"accessories",htg:"30"},{key:"123",title:"Actress Mouse",type:"accessories",htg:"35"},{key:"124",title:"Fashion Mouse",type:"accessories",htg:"40"},{key:"125",title:"Sexy",type:"accessories",htg:"45"},{key:"126",title:"SuperStar",type:"accessories",htg:"50"},{key:"127",title:"Little Snowflake",type:"christmas",htg:"Christmas 2011"},{key:"128",title:"Christmas Spirit",type:"christmas",htg:"Christmas 2011"},{key:"129",title:"Little Pixie",type:"christmas",htg:"Christmas 2011"},{key:"130",title:"Santa Claus",type:"christmas",htg:"Christmas 2011"},{key:"138",title:"Evian Mouse",type:"butts",htg:'<a href="http://www.youtube.com/watch?v=dQw4w9WgXcQ">Click Here To Get It</a>'},{key:"200",title:"Goddess Shaman",type:"saves",htg:"100000"},{key:"202",title:"The Wind Master",type:"firsts",htg:"20000"},{key:"210",title:"Alluring Mouse ",type:"valentines",htg:"Valentines 2014"},{key:"211",title:"Temptress",type:"valentines",htg:"Valentines 2014"},{key:"212",title:"Latin Lover",type:"valentines",htg:"Valentines 2014"},{key:"213",title:"Decorator",type:"hardmodes",htg:"500"},{key:"214",title:"Builder",type:"hardmodes",htg:"2000"},{key:"215",title:"Manufacturer",type:"hardmodes",htg:"4000"},{key:"216",title:"Technician",type:"hardmodes",htg:"7000"},{key:"217",title:"Mechanic",type:"hardmodes",htg:"10000"},{key:"218",title:"Specialist",type:"hardmodes",htg:"14000"},{key:"219",title:"Inventor",type:"hardmodes",htg:"18000"},{key:"220",title:"Engineer",type:"hardmodes",htg:"22000"},{key:"221",title:"Inventive Mouse",type:"hardmodes",htg:"26000"},{key:"222",title:"Ingenious Mouse",type:"hardmodes",htg:"30000"},{key:"223",title:"Virtuoso",type:"hardmodes",htg:"34000"},{key:"224",title:"Sprinter",type:"firsts",htg:"12000"},{key:"225",title:"Batmouse",type:"firsts",htg:"14000"},{key:"226",title:"The Unseen",type:"firsts",htg:"16000"},{key:"227",title:"Unstoppable",type:"firsts",htg:"18000"},{key:"228",title:"¡Ándale! ¡Ándale!",type:"firsts",htg:"25000"},{key:"229",title:"Torpedo",type:"firsts",htg:"30000"},{key:"230",title:"Speedy Gorgonzola",type:"firsts",htg:"35000"},{key:"231",title:"Dynamite",type:"firsts",htg:"7000"},{key:"232",title:"Speedmaster",type:"firsts",htg:"8000"},{key:"233",title:"Whirlwind",type:"firsts",htg:"9000"},{key:"234",title:"Om Nom Nom",type:"cheeses",htg:"55000"},{key:"235",title:"*-*",type:"cheeses",htg:"60000"},{key:"236",title:"Cheese Addict",type:"cheeses",htg:"65000"},{key:"237",title:"Cheesus",type:"cheeses",htg:"70000"},{key:"238",title:"Queen of",type:"cheeses",htg:"75000"},{key:"240",title:"Cookies",type:"christmas",htg:"Christmas 2011"},{key:"241",title:"Christmas Cake",type:"christmas",htg:"Christmas 2011"},{key:"242",title:"Whitebeard",type:"christmas",htg:"Christmas 2011"},{key:"243",title:"Generous",type:"christmas",htg:"Christmas 2011"},{key:"244",title:"Snowy",type:"christmas",htg:"Christmas 2011"},{key:"245",title:"Snowstorm",type:"christmas",htg:"Christmas 2011"},{key:"246",title:"Dauphine",type:"cosplay",htg:"Cosplay Contest 2011"},{key:"247",title:"Foxy",type:"cosplay",htg:"Cosplay Contest 2011"},{key:"248",title:"Miss Transformice",type:"cosplay",htg:"Cosplay Contest 2011"},{key:"249",title:"Omelettovore",type:"valentines",htg:"Valentines 2014"},{key:"250",title:"My Cutie Pie",type:"valentines",htg:"Valentines 2014"},{key:"252",title:"Souris Lilloise",type:"meetup",htg:"March 2012 Transformice meetup"},{key:"253",title:"Tonnerre de Brest",type:"fools",htg:"April Fools Day"},{key:"254",title:"Chocovore",type:"easters",htg:"Easter 2014"},{key:"255",title:"Chocobunny",type:"easters",htg:"Easter 2014"},{key:"256",title:"Rookie",type:"bootcamps",htg:"1"},{key:"257",title:"Neophyte",type:"bootcamps",htg:"3"},{key:"258",title:"Private",type:"bootcamps",htg:"5"},{key:"259",title:"Deft Mouse",type:"bootcamps",htg:"7"},{key:"260",title:"Solo Artist",type:"bootcamps",htg:"10"},{key:"261",title:"Corporal",type:"bootcamps",htg:"15"},{key:"262",title:"Accurate Mouse",type:"bootcamps",htg:"20"},{key:"263",title:"Bootcamper",type:"bootcamps",htg:"25"},{key:"264",title:"Sergeant",type:"bootcamps",htg:"30"},{key:"265",title:"Corner Jumper",type:"bootcamps",htg:"40"},{key:"266",title:"Skilled Mouse",type:"bootcamps",htg:"50"},{key:"267",title:"Lieutenant",type:"bootcamps",htg:"60"},{key:"268",title:"Longjumper",type:"bootcamps",htg:"70"},{key:"269",title:"Incredimouse",type:"bootcamps",htg:"80"},{key:"270",title:"Bootcamp Addict",type:"bootcamps",htg:"90"},{key:"271",title:"Captain",type:"bootcamps",htg:"100"},{key:"272",title:"Dexterous Mouse",type:"bootcamps",htg:"120"},{key:"273",title:"Maniac",type:"bootcamps",htg:"140"},{key:"274",title:"Major",type:"bootcamps",htg:"160"},{key:"275",title:"Cheese Artist",type:"bootcamps",htg:"180"},{key:"276",title:"Acrobat",type:"bootcamps",htg:"200"},{key:"277",title:"Colonel",type:"bootcamps",htg:"250"},{key:"278",title:"Shortcutter",type:"bootcamps",htg:"300"},{key:"279",title:"Tarzan",type:"bootcamps",htg:"350"},{key:"280",title:"Général",type:"bootcamps",htg:"400"},{key:"281",title:"Living Legend",type:"bootcamps",htg:"500"},{key:"282",title:"Stuntmouse",type:"bootcamps",htg:"600"},{key:"283",title:"Pro",type:"bootcamps",htg:"700"},{key:"284",title:"Chuck Souris",type:"bootcamps",htg:"800"},{key:"285",title:"Queen of Bootcamp",type:"bootcamps",htg:"900"},{key:"286",title:"Gravity Master",type:"bootcamps",htg:"1000"},{key:"287",title:"Vampire",type:"halloweens",htg:"Halloween 2013"},{key:"288",title:"Snowball",type:"christmas",htg:"Christmas 2012"},{key:"289",title:"I'm cold",type:"christmas",htg:"Christmas 2012"},{key:"290",title:"Grilled Chestnut",type:"christmas",htg:"Christmas 2012"},{key:"291",title:"Chaussette",type:"christmas",htg:"Christmas 2012"},{key:"292",title:"Souris Sapin",type:"christmas",htg:"Christmas 2012"},{key:"293",title:"Cookies Eater",type:"christmas",htg:"Christmas 2012"},{key:"294",title:"I You",type:"valentines",htg:"Valentines 2014"},{key:"295",title:"Chicken",type:"easters",htg:"Easter 2014"},{key:"296",title:"Explorer",type:"fishings",htg:"Fishing 2013"},{key:"297",title:"Sardine",type:"fishings",htg:"Fishing 2013"},{key:"298",title:"Fishermouse",type:"fishings",htg:"Fishing 2013"},{key:"299",title:"Adorer",type:"fishings",htg:"Fishing 2013"},{key:"300",title:"Frankenmaus",type:"halloweens",htg:"Halloween 2013"},{key:"301",title:"Candy *-*",type:"halloweens",htg:"Halloween 2013"},{key:"302",title:"Pumpkin Juice",type:"halloweens",htg:"Halloween 2013"},{key:"303",title:"Trick or Treat",type:"halloweens",htg:"Halloween 2013"},{key:"304",title:"Poltergeist",type:"halloweens",htg:"Halloween 2013"},{key:"305",title:"Halloween 2012",type:"halloweens",htg:"Halloween 2013"},{key:"306",title:"Halloween 2013",type:"halloweens",htg:"Halloween 2013"},{key:"307",title:"Von Drekkemaus",type:"halloweens",htg:"Halloween 2013"},{key:"308",title:"Candy Cane",type:"christmas",htg:"Christmas 2013"},{key:"309",title:"Fairy Lights",type:"christmas",htg:"Christmas 2013"},{key:"310",title:"Papaille Noel",type:"christmas",htg:"Christmas 2013"},{key:"311",title:"Elfette",type:"christmas",htg:"Christmas 2013"},{key:"312",title:"Snow Angel",type:"christmas",htg:"Christmas 2013"},{key:"313",title:"Just Married",type:"valentines",htg:"Valentines 2014"},{key:"314",title:"Candy Apple",type:"valentines",htg:"Valentines 2014"},{key:"315",title:"Broken Heart",type:"valentines",htg:"Valentines 2014"},{key:"316",title:"Honeymoon",type:"valentines",htg:"Valentines 2014"},{key:"317",title:"Carnaval 2014",type:"carnavals",htg:"Carnaval 2014"},{key:"318",title:"Churros",type:"carnavals",htg:"Carnaval 2014"},{key:"319",title:"Partygoer",type:"carnavals",htg:"Carnaval 2014"},{key:"320",title:"Cock-a-doodle-doo",type:"easters",htg:"Easter 2014"},{key:"321",title:"Cocoa",type:"easters",htg:"Easter 2014"},{key:"322",title:"Egg hunter",type:"easters",htg:"Easter 2014"},{key:"323",title:"Childish Mouse",type:"childrens",htg:"Children's Day 2014"},{key:"324",title:"Smart",type:"divines",htg:"500"},{key:"326",title:"Mice's friend",type:"divines",htg:"2000"},{key:"327",title:"Professor",type:"divines",htg:"4000"},{key:"328",title:"Designer",type:"divines",htg:"7000"},{key:"329",title:"Mysterious",type:"divines",htg:"10000"},{key:"330",title:"Shamazing",type:"divines",htg:"15000"},{key:"331",title:"Cheese Detector",type:"divines",htg:"20000"},{key:"332",title:"The Brain",type:"divines",htg:"25000"},{key:"333",title:"Majestic",type:"divines",htg:"30000"},{key:"334",title:"Divinity",type:"divines",htg:"40000"},{key:"335",title:"What the Fish",type:"fishings",htg:"Fishing 2014"},{key:"336",title:"Fromagic",type:"fishings",htg:"Fishing 2014"},{key:"337",title:"Yeeehaaaa!",type:"fishings",htg:"Fishing 2014"},{key:"338",title:"Best Trainer",type:"fishings",htg:"Fishing 2014"},{key:"339",title:"All Aboard!",type:"fishings",htg:"Fishing 2014"},{key:"340",title:"herp derp",type:"fishings",htg:"Fishing 2014"},{key:"341",title:"Captain Nemouse",type:"fishings",htg:"Fishing 2014"},{key:"342",title:"Indiana Mouse",type:"fishings",htg:"Fishing 2014"},{key:"343",title:"Casper",type:"halloweens",htg:"Halloween 2014"},{key:"344",title:"Pumpkin Pie",type:"halloweens",htg:"Halloween 2014"},{key:"345",title:"Ghostbuster",type:"halloweens",htg:"Halloween 2014"},{key:"346",title:"Zombie",type:"halloweens",htg:"Halloween 2014"},{key:"347",title:"Vampire Slayer",type:"halloweens",htg:"Halloween 2014"},{key:"348",title:"Spooky",type:"halloweens",htg:"Halloween 2014"},{key:"349",title:"Sweet Tooth",type:"halloweens",htg:"Halloween 2014"},{key:"350",title:"Wintry",type:"christmas",htg:"Christmas 2014"},{key:"351",title:"Gingerbread",type:"christmas",htg:"Christmas 2014"},{key:"352",title:"Polar Mouse",type:"christmas",htg:"Christmas 2014"},{key:"353",title:"Big Turkey",type:"christmas",htg:"Christmas 2014"},{key:"354",title:"Christmas Savior",type:"christmas",htg:"Christmas 2014"},{key:"355",title:"Angry Mouse",type:"easters",htg:"Easter 2015"},{key:"356",title:"Caramel Duchess",type:"easters",htg:"Easter 2015"},{key:"357",title:"King's Pastry Chef",type:"easters",htg:"Easter 2015"},{key:"358",title:"Cake Face",type:"easters",htg:"Easter 2015"},{key:"359",title:"Candy Lord",type:"easters",htg:"Easter 2015"},{key:"360",title:"Model Student",type:"childrens",htg:"Children's Day 2015"},{key:"361",title:"Dora the Explorer",type:"fishings",htg:"Fishing 2015"},{key:"362",title:"Archaeologist Mouse",type:"fishings",htg:"Fishing 2015"},{key:"363",title:"Allan Quatermouse",type:"fishings",htg:"Fishing 2015"},{key:"364",title:"Patriotic",type:"independences",htg:"USA USA USA USA!!!!"},{key:"365",title:"Sans-culotte",type:"independences",htg:"Bastille Day"},{key:"366",title:"Dunce",type:"school",htg:"Back to School 2015"},{key:"367",title:"First in the Class",type:"school",htg:"Back to School 2015"},{key:"368",title:"Bookmouse",type:"school",htg:"Back to School 2015"},{key:"369",title:"Academician",type:"school",htg:"Back to School 2015"},{key:"370",title:"Namaste",type:"independences",htg:"India Independence Day"},{key:"440",title:"Fromadmin",type:"admins",htg:"Transformice admin"},{key:"442",title:"Sourigami",type:"admins",htg:"Transformice admin"},{key:"444",title:"La Belette",type:"admins",htg:"Transformice admin"},{key:"445",title:"El Pinolero",type:"admins",htg:"Transformice admin"},{key:"447",title:"Kikoo Admin",type:"admins",htg:"Transformice admin"},{key:"448",title:"Queijadinha",type:"admins",htg:"Transformice admin"},{key:"446",title:"Dehset Admin",type:"admins",htg:"Transformice admin"},{key:"449",title:"La Goulue",type:"admins",htg:"Transformice admin"},{key:"450",title:"Souris Électrique",type:"admins",htg:"Transformice admin"},{key:"451",title:"Gold Saint",type:"admins",htg:"Transformice admin"}];
 function doBG() {
     document.body.style.background = bgcolorlist[bgcolor];
 }
-
 function doStuff() {
-    var tinput = document.getElementById("title").value;
-    var xs = tinput.toLowerCase();
-    var found = [];
-	var sm;
-	var cn = -1;
-	var titlelist = [];
-	
-	if (xs && isNaN(xs) === false) {
-		for (var i = 0; i < titles.length; i++){
-            if (titles[i].toLowerCase().indexOf(xs) != -1){
-                found.push("<font size=1>"+titles[i]+"</font><br>"+titles[i+1]+"<br>");
-            }
+var tinput = document.getElementById("title").value;
+var xs = tinput.toLowerCase();
+var found = [];
+var sm;
+var cn = -1;
+var keywordlist = [];
+var titlelist = [];
+
+if (xs && isNaN(xs) === false) {
+	for (var i = 0; i < titles.length; i++){
+        if (titles[i].key.toLowerCase().indexOf(xs) != -1){
+			titlelist.push("<font size=1>"+titles[i].key+"</font><br>"+titles[i].title+" ("+titles[i].htg+")");
         }
-		cn = 0;
-	}
-	if (xs && xs.length >= 2 && isNaN(xs) === true) {
-		for (var i = 0; i < titles.length; i++){
-            if (titles[i].toLowerCase().indexOf(xs) != -1){
-                found.push("<font size=1>"+titles[i]+"</font><br> /title "+titles[i - 1]+"<br>");
-            }
-        }
-		cn = 1;
-	}
-	if (xs == "full list") {
-		for (var i = 0; i < titles.length; i++){
-			if (isNaN(titles[i]) == false){
-				titlelist.push("<font size=1>/title " + titles[i] + "</font><br>" + titles[i+1] + "<br>");
-			}
-		}
-		cn = 2;
-	}
-	if (xs == "gathered") {
-		for (var i = 0; i < gathered2.length; i++){
-			if (isNaN(gathered2[i]) == false){
-				titlelist.push("<font size=1>/title " + gathered2[i] + "</font><br>" + gathered2[i+1] + "<br>");
-			}
-		}
-		cn = 3;
-	}
-	if (xs == "firsts") {
-		for (var i = 0; i < firsts2.length; i++){
-			if (isNaN(firsts2[i]) == false){
-			titlelist.push("<font size=1>/title " + firsts2[i] + "</font><br>" + firsts2[i+1] + "<br>");
-			}
-		}
-		cn = 4;
-	}
-	if (xs == "saves") {
-		for (var i = 0; i < saves2.length; i++){
-			if (isNaN(firsts2[i]) == false){
-			titlelist.push("<font size=1>/title " + saves2[i] + "</font><br>" + saves2[i+1] + "<br>");
-			}
-		}
-		cn = 5;
-	}
-	if (xs == "xmas") {
-		for (var i = 0; i < christmas2.length; i++){
-			if (isNaN(christmas2[i]) == false){
-			titlelist.push("<font size=1>/title " + christmas2[i] + "</font><br>" + christmas2[i+1] + "<br>");
-			}
-		}
-		cn = 6;
-	}
-	if (xs == "fishing") {
-		for (var i = 0; i < fishing2.length; i++){
-			if (isNaN(fishing2[i]) == false){
-			titlelist.push("<font size=1>/title " + fishing2[i] + "</font><br>" + fishing2[i+1] + "<br>");
-			}
-		}
-		cn = 7;
-	}
-	if (xs == "independence") {
-		for (var i = 0; i < independence2.length; i++){
-			if (isNaN(independence2[i]) == false){
-			titlelist.push("<font size=1>/title " + independence2[i] + "</font><br>" + independence2[i+1] + "<br>");
-			}
-		}
-		cn = 8;
-	}
-	if (xs == "easter") {
-		for (var i = 0; i < easter2.length; i++){
-			if (isNaN(easter2[i]) == false){
-			titlelist.push("<font size=1>/title " + easter2[i] + "</font><br>" + easter2[i+1] + "<br>");
-			}
-		}
-		cn = 9;
-	}
-	if (xs == "childrens") {
-		for (var i = 0; i < childrens2.length; i++){
-			if (isNaN(childrens2[i]) == false){
-			titlelist.push("<font size=1>/title " + childrens2[i] + "</font><br>" + childrens2[i+1] + "<br>");
-			}
-		}
-		cn = 10;
-	}
-	if (xs == "halloweens") {
-		for (var i = 0; i < halloweens2.length; i++){
-			if (isNaN(halloweens2[i]) == false){
-			titlelist.push("<font size=1>/title " + halloweens2[i] + "</font><br>" + halloweens2[i+1] + "<br>");
-			}
-		}
-		cn = 11;
-	}
-	if (xs == "hardmode") {
-		for (var i = 0; i < hardmode.length; i++){
-			if (isNaN(hardmode[i]) == false){
-					titlelist.push("<font size=1>/title " + hardmode[i] + "</font><br>" + hardmode[i+1] + "<br>");
-				}
-			}
-		cn = 12;
-	}
-	if (xs == "divine") {
-		for (var i = 0; i < divine.length; i++){
-			if (isNaN(divine[i]) == false){
-				titlelist.push("<font size=1>/title " + divine[i] + "</font><br>" + divine[i+1] + "<br>");
-			}
-		}
-		cn = 13;
-	}
-	if (xs == "bootcamps") {
-		for (var i = 0; i < bootcamps.length; i++){
-			if (isNaN(bootcamps[i]) == false){
-				titlelist.push("<font size=1>/title " + bootcamps[i] + "</font><br>" + bootcamps[i+1] + "<br>");
-			}
-		}
-		cn = 14;
-	}
-	if (xs == "shops") {
-		for (var i = 0; i < shops.length; i++){
-			if (isNaN(shops[i]) == false){
-				titlelist.push("<font size=1>/title " + shops[i] + "</font><br>" + shops[i+1] + "<br>");
-			}
-		}
-		cn = 15;
-	}
-	if (xs == "schools") {
-		for (var i = 0; i < schools.length; i++){
-			if (isNaN(schools[i]) == false){
-				titlelist.push("<font size=1>/title " + schools[i] + "</font><br>" + schools[i+1] + "<br>");
-			}
-		}
-		cn = 16;
-	}
-	if (xs == "carnavals") {
-		for (var i = 0; i < carnevals.length; i++){
-			if (isNaN(carnevals[i]) == false){
-				titlelist.push("<font size=1>/title " + carnevals[i] + "</font><br>" + carnevals[i+1] + "<br>");
-			}
-		}
-		cn = 17;
-	}
-	if (xs == "") {
-		cn = 20;
-	}
-	
-    switch (cn) {
-    case 0:
-		document.getElementById("command").innerHTML = found.join("");
-        break;
-    case 1:
-		document.getElementById("command").innerHTML = found.join("");
-        break;
-    case 2:
-	case 3:
-	case 4:
-	case 5:
-	case 6:
-	case 7:
-	case 8:
-	case 9:
-	case 10:
-	case 11:
-	case 12:
-	case 13:
-	case 14:
-	case 15:
-	case 16:
-	case 17:
-		document.getElementById("command").innerHTML = titlelist.join("");
-        break;
-    case 20:
-        document.getElementById("command").innerHTML = "no results";
-		break;
     }
-	eval(atob('aWYgKHhzICYmIGlzTmFOKHhzKSA9PT0gdHJ1ZSkgew0KCQlmb3IgKHZhciBpID0gMDsgaSA8IHNuLmxlbmd0aDsgaSsrKXsNCgkJCWlmICh4cyA9PSBzbltpXSl7DQoJCQkJc20gPSBzbltpLTFdOw0KCQkJfQ0KCQl9DQoJfQ0KDQoJaWYgKHNtKSB7DQogICAgICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJzZWNyZXQiKS5pbm5lckhUTUwgPSBzbTsNCiAgICB9IGVsc2Ugew0KICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgic2VjcmV0IikuaW5uZXJIVE1MID0gIiZuYnNwOyI7DQogICAgfQ=='));
+	cn = 0;
+}
+
+if (xs && xs.length >= 2 && isNaN(xs) === true) {
+	for (var i = 0; i < titles.length; i++){
+	    if (titles[i].title.toLowerCase().indexOf(xs) != -1 && isNaN(titles[i].htg) === false) {
+	        titlelist.push("<font size=1>"+titles[i].title+" ("+titles[i].htg+" " + titles[i].type + ")</font><br>/title "+titles[i].key);
+	    } else if (titles[i].title.toLowerCase().indexOf(xs) != -1) {
+	        titlelist.push("<font size=1>"+titles[i].title+" ("+titles[i].htg+")</font><br>/title "+titles[i].key);
+	    }
+    }
+	cn = 1;
+}
+
+
+if (xs === "full list") {
+	for (var i = 0; i < titles.length; i++){
+	    if (isNaN(titles[i].htg) === false) {
+	        titlelist.push("<font size=1>"+titles[i].title+" ("+titles[i].htg+" "+titles[i].type+")</font><br>/title "+titles[i].key);
+	    } else {
+	        titlelist.push("<font size=1>"+titles[i].title+" ("+titles[i].htg+")</font><br>/title "+titles[i].key);
+	    }
+	}
+	cn = 3;
+}
+
+if (xs === "cheeses" || "firsts" || "saves" || "accessories" || "hardmode" || "divines" || "bootcamps" || "christmas" || "halloweens" || "valentines" || "easters" || "fishings" || "carnavals" || "childrens" || "independences" || "admins" || "fools") {
+	for (var i = 0; i < titles.length; i++){
+		if (isNaN(titles[i].htg) === false && titles[i].type === xs) {
+			keywordlist.push(
+                {htg: titles[i].htg, html: "<font size=1>"+titles[i].title+" ("+titles[i].htg+" "+titles[i].type+")</font><br>/title "+titles[i].key}
+            );
+		} else if (titles[i].type === xs) {
+		        titlelist.push("<font size=1>"+titles[i].title+" ("+titles[i].htg+")</font><br>/title "+titles[i].key);
+		    }
+		}
 	
+	if (keywordlist !== 0) {
+    	keywordlist.sort(function(a,b){
+            var alc = parseInt(a.htg), blc = parseInt(b.htg);
+            return alc > blc ? 1 : alc < blc ? -1 : 0;
+        });
+    
+        for(var o in keywordlist) {
+        titlelist.push(keywordlist[o].html);
+        }
+	}
+	cn = 4;
+}
+
+document.getElementById("command").innerHTML = titlelist.join("<br>");
+
+eval(atob('aWYgKHhzICYmIGlzTmFOKHhzKSA9PT0gdHJ1ZSkgew0KCQlmb3IgKHZhciBpID0gMDsgaSA8IHNuLmxlbmd0aDsgaSsrKXsNCgkJCWlmICh4cyA9PSBzbltpXSl7DQoJCQkJc20gPSBzbltpLTFdOw0KCQkJfQ0KCQl9DQoJfQ0KDQoJaWYgKHNtKSB7DQogICAgICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJzZWNyZXQiKS5pbm5lckhUTUwgPSBzbTsNCiAgICB9IGVsc2Ugew0KICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgic2VjcmV0IikuaW5uZXJIVE1MID0gIiZuYnNwOyI7DQogICAgfQ=='));
+
 }
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

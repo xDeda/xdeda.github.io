@@ -1,19 +1,19 @@
-somehow display how to get that title -> elizalove/levelup
+somehow display how to get that title -> elizalove/levelup (implemented)
 
 copy-to-clipboard on /title # click -> deda
 
 facebook page for ultimate likes -> levelup
 
 "christmas 2015", "valentines 2014", "children's day" keyword searches -> deda (implemented)
-gathered, firsts, saves, xmas, fishing, independence, easter, childrens, halloweens, hardmode, divine, bootcamps, shops, schools, carnavals
+"cheeses" || "firsts" || "saves" || "accessories" || "hardmode" || "divines" || "bootcamps" || "christmas" || "halloweens" || "valentines" || "easters" || "fishings" || "carnavals" || "childrens" || "independences" || "admins" || "fools"
 
 see full list -> levelup (implemented)
-full list
+"full list"
 
 joke titles -> levelup (NEED MORE)
 <<Evian Mouse>> /title 138 (already in)
 
-hidden name messages -> epilepsy
+hidden name messages -> epilepsy (implemented)
 
 type "random", get random -> levelup
 
@@ -30,9 +30,3 @@ bakpak picture
 suggestions i'll never get around to:
 
 themes
-
-brushups:
-move secret field
-fix annoying scrollbar
-remove "no title like that" message
-change input textfield so the "search for title" message is either inside it or above it
