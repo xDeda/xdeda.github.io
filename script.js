@@ -26,12 +26,10 @@ function link(msg) {
 		case 14: msg2 = "school"; break;
 		case 15: msg2 = "carnavals"; break;
 		case 16: msg2 = "valentines"; break;
+		case 17: msg2 = "help"; break;
 	}	
 	document.getElementById("title").value = msg2;
 	doStuff();
-}
-function help() {
-	document.getElementById("command").innerHTML = "<p>Hi!<br><br>Type these words in to get all titles that has something to do with them:<br>full list<br>cheeses, firsts, saves<br>xmas, fishing, independence<br>easter, childrens, halloweens<br>hardmode, divine, bootcamps<br>shops, school, carnavals</p>";
 }
 function doStuff() {
 var tinput = document.getElementById("title").value;
@@ -78,7 +76,7 @@ if (xs === "full list") {
 }
 
 if (xs === "help") {
-	titlelist.push("<p>Hi!<br><br>Type these words in to get all titles that has something to do with them:<br>full list<br>cheeses, firsts, saves<br>xmas, fishing, independence<br>easter, childrens, halloweens<br>hardmode, divine, bootcamps<br>shops, schools, carnavals</p>");
+	titlelist.push("<p>Hi! Type these words in to get all titles that has something to do with them:<br>full list, cheeses, firsts, saves, xmas, fishing, independence, easter, childrens, halloweens, hardmode, divine, bootcamps, shops, school, carnavals<br><br>Otherwise, try and type in your name, there might be a message for you. :-)<br><br>Maybe there's some other stuff too.</p>");
 }
 
 if (xs === "random") {
