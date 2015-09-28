@@ -28,7 +28,7 @@ body {
 #title {
 	font-size: 20px;
 	position: relative;
-	top: -38px;
+	top: -5%;
 }
 
 #command {
@@ -39,7 +39,7 @@ body {
 .secret {
 	font-size: 20px;
 	font-style: italic;
-	vertical-align: top;
+	text-align: center;
 }
 
 .links {
@@ -50,34 +50,61 @@ body {
 }
 	
 .box {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
-	flex-flow: column;
+	-webkit-flex-flow: column;
+	    -ms-flex-flow: column;
+	        flex-flow: column;
 	height: 100%;
 }
 
+.keywords {
+	padding: 5px;
+	text-align: center;
+	width: 98%;
+	border-bottom: thin solid rgba(0,0,0,0.05);
+	font-size: 10px;
+}
+
 .box .row {
-	flex: 0 1 30px;
+	-webkit-box-flex: 0;
+	-webkit-flex: 0 1 30px;
+	    -ms-flex: 0 1 30px;
+	        flex: 0 1 30px;
 }
 
 .box .row.header {
-	flex: 0 1 auto;
+	-webkit-box-flex: 0;
+	-webkit-flex: 0 1 116px;
+	    -ms-flex: 0 1 116px;
+	        flex: 0 1 116px;
 	text-align: center;
+	height: 100%;
+	padding-top: 5px;
 }
 
 .box .row.header img {
-	height: 25%;
 	width: 25%;
 }
 
 .box .row.content {
-	flex: 1 1 auto;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1 1 auto;
+	    -ms-flex: 1 1 auto;
+	        flex: 1 1 auto;
 	overflow-y: scroll;
-	text-align: center;
 	margin-right: 5px;
+	padding-left: 35%;
+	padding-right: 35%;
 }
 
 .box .row.footer {
-	flex: 0 0 40px;
+	-webkit-box-flex: 0;
+	-webkit-flex: 0 0 40px;
+	    -ms-flex: 0 0 40px;
+	        flex: 0 0 40px;
 	padding: 0px;
 	text-align: center;
 }

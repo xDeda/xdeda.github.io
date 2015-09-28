@@ -15,7 +15,7 @@ joke titles -> levelup (NEED MORE)
 
 hidden name messages -> epilepsy (implemented)
 
-type "random", get random -> levelup
+type "random", get random -> levelup (implemented)
 
 links -> levelup (implemented)
 transformice.com | creator's instagram | help | github repository

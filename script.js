@@ -9,7 +9,29 @@ function ab(x) {
 	return atob(x);
 }
 function link(msg) {
-	document.getElementById("title").value = msg;
+	switch(msg) {
+		case 1: msg2 = "cheeses"; break;
+		case 2: msg2 = "firsts"; break;
+		case 3: msg2 = "saves"; break;
+		case 4: msg2 = "hardmodes"; break;
+		case 5: msg2 = "divines"; break;
+		case 6: msg2 = "bootcamps"; break;
+		case 7: msg2 = "accessories"; break;
+		case 8: msg2 = "fishings"; break;
+		case 9: msg2 = "independences"; break;
+		case 10: msg2 = "easters"; break;
+		case 11: msg2 = "childrens"; break;
+		case 12: msg2 = "halloweens"; break;
+		case 13: msg2 = "xmas"; break;
+		case 14: msg2 = "school"; break;
+		case 15: msg2 = "carnavals"; break;
+		case 16: msg2 = "valentines"; break;
+	}	
+	document.getElementById("title").value = msg2;
+	doStuff();
+}
+function help() {
+	document.getElementById("command").innerHTML = "<p>Hi!<br><br>Type these words in to get all titles that has something to do with them:<br>full list<br>cheeses, firsts, saves<br>xmas, fishing, independence<br>easter, childrens, halloweens<br>hardmode, divine, bootcamps<br>shops, school, carnavals</p>";
 }
 function doStuff() {
 var tinput = document.getElementById("title").value;
@@ -68,7 +90,7 @@ if (xs === "random") {
 	}
 }
 
-if (xs === "cheeses" || "firsts" || "saves" || "accessories" || "hardmode" || "divines" || "bootcamps" || "xmas" || "halloweens" || "valentines" || "easters" || "fishings" || "carnavals" || "childrens" || "independences" || "admins" || "fools") {
+if (xs === "cheeses" || "firsts" || "saves" || "accessories" || "hardmode" || "divines" || "bootcamps" || "xmas" || "halloweens" || "valentines" || "easters" || "fishings" || "carnavals" || "childrens" || "independences" || "admins" || "fools" || "school") {
 	for (var i = 0; i < titles.length; i++){
 		if (isNaN(titles[i].htg) === false && titles[i].type === xs) {
 			keywordlist.push(
