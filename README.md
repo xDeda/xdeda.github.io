@@ -1,5 +1,4 @@
-# xdeda.github.io
-titlechoosing
+# title chooser
 it's a simple app that lets you type in part of a string and it will match it against an array of specific titles
 if your string matches, it will display the titles it matches with and the corresponding command you need to type into the game to get the title above your little, pretty mouse
 you can also type in a number to see the corresponding title

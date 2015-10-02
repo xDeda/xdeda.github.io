@@ -25,6 +25,14 @@ body {
     -webkit-animation-duration: 1s;
 }
 
+.keywords {
+	padding: 5px;
+	text-align: center;
+	width: 99%;
+	border-bottom: thin solid rgba(0,0,0,0.05);
+	font-size: 10px;
+}
+
 #title {
 	font-size: 20px;
 	position: relative;
@@ -60,14 +68,6 @@ body {
 	height: 100%;
 }
 
-.keywords {
-	padding: 5px;
-	text-align: center;
-	width: 99%;
-	border-bottom: thin solid rgba(0,0,0,0.05);
-	font-size: 10px;
-}
-
 .box .row {
 	-webkit-box-flex: 0;
 	-webkit-flex: 0 1 30px;
@@ -83,6 +83,8 @@ body {
 	text-align: center;
 	height: 100%;
 	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom: thin solid rgba(0,0,0,0.05);
 }
 
 .box .row.header img {
@@ -107,6 +109,7 @@ body {
 	        flex: 0 0 40px;
 	padding: 0px;
 	text-align: center;
+	border-top: thin solid rgba(0,0,0,0.05);
 }
 
 ::-webkit-scrollbar {
