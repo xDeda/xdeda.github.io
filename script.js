@@ -78,8 +78,7 @@ if (xs === "full list") {
 }
 
 if (xs === "help") {
-	titlelist.push("<p>Hi! Type these words in to get all titles that have something to do with them:<br>full list, cheeses, firsts, saves, xmas, fishing, independence, easter, childrens, halloweens, hardmode, divine, bootcamps, shops, school, carnavals<br><br>Otherwise, try and type in your name, there might be a message for you. :-)<br><br>Maybe there's some other stuff too.</p>");
-}
+	titlelist.push("<h3>Use the box to the right of the logo.</h3> This is an app for choosing titles.<br> You can start by writing the title or the title number of the title you want.<br> The links in the top will show you titles from specific achievements.<br><br>There might be a few hidden features as well."); }
 
 if (xs === "credits") {
 	titlelist.push("<p>Creation: Dedax :)))<br><br>Banner/logo thingy: Jacobmood<br><br>Suggestions from:<br>Elizalove, Levelup, Epilepsy</p>");
