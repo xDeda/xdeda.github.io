@@ -115,9 +115,9 @@ if(xs === ab("YnV0dHM=")) {
 }
 
 if(xs === ab("YW15")) {
-	document.getElementById(ab("YW15")).style.display = "block";
+	document.getElementById(ab("YW15Y29udGFpbmVy")).style.display = "block";
 } else {
-	document.getElementById(ab("YW15")).style.display = "none";
+	document.getElementById(ab("YW15Y29udGFpbmVy")).style.display = "none";
 }
 
 if (sm) {

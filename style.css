@@ -16,7 +16,8 @@ body {
   height:418px;
   overflow:hidden;
   padding: 0px;
-  
+  display: none;
+
   animation: spin 1s linear 0s infinite;
   
   animation-play-state: paused;
@@ -29,7 +30,6 @@ body {
   background-image: url(https://cloud.githubusercontent.com/assets/4290245/10271632/ae583248-6b13-11e5-8be8-33637a34854e.jpg);
   background-repeat:no-repeat;
   background-position:50% 50%;
-  display: none;
   
   animation: spin 6s linear 0s infinite;
 }
