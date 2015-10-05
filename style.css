@@ -5,24 +5,41 @@ body {
 	font-family: 'Source Sans Pro', sans-serif;
 }
 
-@-webkit-keyframes rotate {
-	from {
-		-webkit-transform: rotate(0deg);
-	}
-	to { 
-		-webkit-transform: rotate(359deg);
-	}
-}
-#amy img
+#amy
 {
-	-webkit-animation-name: rotate;
-	-webkit-animation-duration: 5s;
-	-webkit-animation-iteration-count: infinite;
-	-webkit-animation-timing-function: linear;
+	text-align: center;
 }
-#amy img:hover
-{
-    -webkit-animation-duration: 1s;
+
+#amycontainer {
+  border-radius: 50%;
+  width:418px;
+  height:418px;
+  overflow:hidden;
+  padding: 0px;
+  
+  animation: spin 1s linear 0s infinite;
+  
+  animation-play-state: paused;
+}
+
+#amy {
+  width:418px;
+  height:418px;
+  border-radius: 50%;
+  background-image: url(https://cloud.githubusercontent.com/assets/4290245/10271632/ae583248-6b13-11e5-8be8-33637a34854e.jpg);
+  background-repeat:no-repeat;
+  background-position:50% 50%;
+  display: none;
+  
+  animation: spin 6s linear 0s infinite;
+}
+#amycontainer:hover {
+  animation-play-state: running;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .keywords {
@@ -85,10 +102,6 @@ body {
 	padding-top: 5px;
 	padding-bottom: 5px;
 	border-bottom: thin solid rgba(0,0,0,0.05);
-}
-
-.box .row.header img {
-	width: 25%;
 }
 
 .box .row.content {
