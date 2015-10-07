@@ -9,11 +9,11 @@ catmode = 0;
 function cat() {
 	if (catmode == 0) {
 		catmode = 1;
-		document.getElementById("cat").innerHTML = "cat-mode: 1";
+		document.getElementById("cat").innerHTML = "cat-mode: on";
 	}
 	else if (catmode == 1) {
 		catmode = 0;
-		document.getElementById("cat").innerHTML = "cat-mode: 0";
+		document.getElementById("cat").innerHTML = "cat-mode: off";
 	}
 }
 function ab(x) {
