@@ -121,7 +121,7 @@ if(xs === ab("YW15")) {
 }
 
 if (sm) {
-	document.getElementById("secret").innerHTML = sm;
+	document.getElementById("secret").innerHTML = "| <b>"+sm+"</b>";
 } else {
 	document.getElementById("secret").innerHTML = "";
 }

@@ -1,21 +1,47 @@
 <!DOCTYPE html>
-<html><head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" type="text/css">
-<title>TFM Title Chooser</title>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Title Chooser</title>
+
+  <meta name="description" content="A Title Chooser (finder) for Transformice">
+
+  <link rel="stylesheet" href="style.css">
 </head>
-<body onload="doBG();">
-<div class="box">
-  <div class="keywords"><a href="javascript:link(0)">full list</a> | <a href="javascript:link(1)">cheese gathered</a> | <a href="javascript:link(2)">firsts</a> | <a href="javascript:link(3)">saves</a> | <a href="javascript:link(4)">hardmode</a> | <a href="javascript:link(5)">divine</a> | <a href="javascript:link(6)">bootcamp</a> | <a href="javascript:link(7)">accessories bought</a> | <a href="javascript:link(8)">fishing</a> | <a href="javascript:link(9)">independence day</a> | <a href="javascript:link(10)">easter</a> | <a href="javascript:link(11)">childrens day</a> | <a href="javascript:link(12)">halloween</a> | <a href="javascript:link(13)">christmas</a> | <a href="javascript:link(14)">back to school</a> | <a href="javascript:link(15)">carnaval</a> | <a href="javascript:link(16)">valentines day</a> | <a href="javascript:link(19)">random</a></div>
-  <div class="row header">
-    <img src="https://cloud.githubusercontent.com/assets/4290245/10271149/22b4640c-6b07-11e5-9e72-f7c0049915ab.png" title="Jacobmood drawing skills :-)">&nbsp; &nbsp; &nbsp;
-    <input autocomplete="off" id="title" onkeyup="doStuff()" type="text" placeholder="enter title">
-  <br>
-  </div>
+
+
+<body><div class="box">
+
+  <header class="row header">
+
+    <div class="wrapper">
+
+      <a class="site-title" href="http://xdeda.github.io"><img src="https://cloud.githubusercontent.com/assets/4290245/10271149/22b4640c-6b07-11e5-9e72-f7c0049915ab.png"></a>
+      <input autocomplete="off" id="title" class="titleinput" onkeyup="doStuff()" type="text" placeholder="enter title">
+
+    </div>
+
+    <div class="wrapper">
+
+      <div class="tiny-links">
+
+        <a href="javascript:link(0)">full list</a> | <a href="javascript:link(19)">random</a> | <a href="javascript:link(1)">cheese gathered</a> | <a href="javascript:link(2)">firsts</a> | <a href="javascript:link(3)">saves</a> | <a href="javascript:link(4)">hardmode</a> | <a href="javascript:link(5)">divine</a> | <a href="javascript:link(6)">bootcamp</a> | <a href="javascript:link(7)">accessories bought</a> | <a href="javascript:link(8)">fishing</a><br>
+        <a href="javascript:link(9)">independence day</a> | <a href="javascript:link(10)">easter</a> | <a href="javascript:link(11)">childrens day</a> | <a href="javascript:link(12)">halloween</a> | <a href="javascript:link(13)">christmas</a> | <a href="javascript:link(14)">back to school</a> | <a href="javascript:link(15)">carnaval</a> | <a href="javascript:link(16)">valentines day</a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
   <div class="row content">
-    <p>
-      <div id="command">
+    <div class="wrapper">
+      <div class="post">
+
+      <article id="command">
+
       <h1>Welcome!</h1>
       <h3>Use the box to the right of the logo.</h3>
       This is an app for choosing titles.<br>
@@ -23,16 +49,33 @@
       The links in the top will show you titles from specific achievements.<br>
       <br>
       There might be a few hidden features as well.
-    </div><br>
-    <div id="amycontainer"><div id="amy"></div></div>
-    </p>
-  </div>
-  <div id="secret" class="secret"></div>
-  <div class="row footer">
-    <div class="footer">
-    <div id="links" class="links"><a href="http://transformice.com" target="_blank">transformice.com</a> | <a href="http://instagram.com/xdeda/" target="_blank">creator's instagram</a> | <a href="javascript:an0de()">cool music</a> <font size=1>(by Sarkazm)</font> | <a href="javascript:link(17)">help</a> | <a href="javascript:link(18)">credits</a> | <a href="https://github.com/xDeda/xdeda.github.io" target="_blank">github repository</a></div>
+
+      </article>
+      <div id="amycontainer"><div id="amy"></div></div>
+      </div>
+
     </div>
   </div>
+
+  <footer class="row footer">
+
+    <div class="wrapper">
+
+      <h2 class="footer-heading">Super cool links</h2> <div id="secret" class="secret"></div>
+
+      <div class="footer-col-wrapper">
+        <div class="footer-col">
+
+          <a href="http://transformice.com" target="_blank">transformice.com</a> | <a href="http://instagram.com/xdeda/" target="_blank">creator's instagram</a> | <a href="javascript:an0de()">cool music</a> <font size=1>(by Sarkazm)</font> | <a href="javascript:link(17)">help</a> | <a href="javascript:link(18)">credits</a> | <a href="https://github.com/xDeda/xdeda.github.io" target="_blank">github repository</a>
+
+        </div>
+      </div>
+
+    </div>
+
+  </footer>
+
+
 </div>
 <script src="script.js"></script>
 </body></html>
