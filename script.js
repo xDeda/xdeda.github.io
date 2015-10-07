@@ -65,7 +65,7 @@ var titlecmd;
 if (xs && isNaN(xs) === false) {
 	for (var i = 0; i < titles.length; i++){
         if (titles[i].key.toLowerCase().indexOf(xs) != -1) {
-	    	if (titlelist.length == 0) {
+	    	if (titlelist.length <= 2) {
 		    	titlecmd = "/title "+titles[i].key;
 				copylist.push("lmc_id="+i+";lmc_set_dom_html('title"+i+"',lmc_get_button('"+titlecmd+"',"+i+",cfg));");
 	    	    titlelist.push("<font size=2>/title "+titles[i].key+"<span id='title"+i+"' class='col-button'>button</span></font><br>"+titles[i].title+" ("+titles[i].htg+")");
@@ -79,7 +79,7 @@ if (xs && isNaN(xs) === false) {
 if (xs && xs.length >= 2 && isNaN(xs) === true) {
 	for (var i = 0; i < titles.length; i++){
 	    if (titles[i].title.toLowerCase().indexOf(xs) != -1) {
-	    	if (titlelist.length == 0) {
+	    	if (titlelist.length <= 2) {
 		    	titlecmd = "/title "+titles[i].key;
 				copylist.push("lmc_id="+i+";lmc_set_dom_html('title"+i+"',lmc_get_button('"+titlecmd+"',"+i+",cfg));");
 				titlelist.push("<font size=2>"+titles[i].title+" ("+titles[i].htg+")</font><br>/title "+titles[i].key+"<span id='title"+i+"' class='col-button-s'>button</span>");
