@@ -5,7 +5,8 @@ var titles=[{key:"0",title:"Little Mouse",type:"cheeses",htg:"Gather 0 cheese"},
 function doBG() {
 	document.body.style.background = colorlist[color];
 }
-catmode = 0;
+var catmode = 0;
+var addcopy = 0;
 function cat() {
 	if (catmode == 0) {
 		catmode = 1;
@@ -49,18 +50,28 @@ function an0de() {
 	document.getElementById("command").innerHTML = '<iframe width="100%" height="400" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/149460370&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>';
 }
 function doStuff() {
+document.getElementById("command").className = "command";
+setTimeout(function () {document.getElementById("command").className = "command show";}, 25);  
 var tinput = document.getElementById("title").value;
 var xs = tinput.toLowerCase();
 var found = [];
 var sm;
 var keywordlist = [];
 var titlelist = [];
+var copylist = [];
 var randomtitle;
+var titlecmd;
 
 if (xs && isNaN(xs) === false) {
 	for (var i = 0; i < titles.length; i++){
         if (titles[i].key.toLowerCase().indexOf(xs) != -1) {
-	        titlelist.push("<font size=2>"+titles[i].key+"</font><br>"+titles[i].title+" ("+titles[i].htg+")");
+	    	if (titlelist.length == 0) {
+		    	titlecmd = "/title "+titles[i].key;
+				copylist.push("lmc_id="+i+";lmc_set_dom_html('title"+i+"',lmc_get_button('"+titlecmd+"',"+i+",cfg));");
+	    	    titlelist.push("<font size=2>/title "+titles[i].key+"<span id='title"+i+"' class='col-button'>button</span></font><br>"+titles[i].title+" ("+titles[i].htg+")");
+			} else {
+				titlelist.push("<font size=2>/title "+titles[i].key+"</font><br>"+titles[i].title+" ("+titles[i].htg+")");
+			}
 	    }
     }
 }
@@ -68,28 +79,36 @@ if (xs && isNaN(xs) === false) {
 if (xs && xs.length >= 2 && isNaN(xs) === true) {
 	for (var i = 0; i < titles.length; i++){
 	    if (titles[i].title.toLowerCase().indexOf(xs) != -1) {
-	        titlelist.push("<font size=2>"+titles[i].title+" ("+titles[i].htg+")</font><br>/title "+titles[i].key);
+	    	if (titlelist.length == 0) {
+		    	titlecmd = "/title "+titles[i].key;
+				copylist.push("lmc_id="+i+";lmc_set_dom_html('title"+i+"',lmc_get_button('"+titlecmd+"',"+i+",cfg));");
+				titlelist.push("<font size=2>"+titles[i].title+" ("+titles[i].htg+")</font><br>/title "+titles[i].key+"<span id='title"+i+"' class='col-button-s'>button</span>");
+			} else {
+				titlelist.push("<font size=2>"+titles[i].title+" ("+titles[i].htg+")</font><br>/title "+titles[i].key);
+			}
 	    }
-    }
+	}
 }
 
 
 if (xs === "full list") {
 	for (var i = 0; i < titles.length; i++){
-	    titlelist.push("<font size=2>"+titles[i].title+" ("+titles[i].htg+")</font><br>/title "+titles[i].key);
+		titlelist.push("<font size=2>"+titles[i].title+" ("+titles[i].htg+")</font><br>/title "+titles[i].key);
 	}
 }
 
 if (xs === "help") {
-	titlelist.push("<h3>Use the box to the right of the logo.</h3> This is an app for choosing titles.<br> You can start by writing the title or the title number of the title you want.<br> The links in the top will show you titles from specific achievements.<br><br>There might be a few hidden features as well."); }
+	titlelist.push("<h2>Use the box to the right of the logo.</h2><h4>- Type part of a title or type the title number.<br>- Press the little \"C\" button to copy.<br>- The links in the top will show you titles from specific achievements.</h4>There might be a few hidden features as well."); }
 
 if (xs === "credits") {
-	titlelist.push("<p>Creation: Dedax :)))<br><br>Banner/logo thingy: Jacobmood<br><br>Suggestions from:<br>Elizalove, Levelup, Epilepsy</p>");
+	titlelist.push("<h3>Creation:</h3> Dedax <h3>Banner:</h3> Jacobmood <h4>Suggestions from:</h4>Elizalove, Levelup, Epilepsy, Imaginist<br><br><b>Copy-button:</b> <a href='http://www.lettersmarket.com/lmcbutton.html'>lmcbutton2</a>");
 }
 
 if (xs === "random") {
 	var randomtitle = Math.floor(Math.random()*titles.length);
-	titlelist.push("<font size=2>"+titles[randomtitle].title+" ("+titles[randomtitle].htg+")</font><br>/title "+titles[randomtitle].key);
+	titlecmd = "/title "+titles[randomtitle].key;
+	copylist.push("lmc_id="+randomtitle+";lmc_set_dom_html('title"+randomtitle+"',lmc_get_button('"+titlecmd+"',"+randomtitle+",cfg));");
+	titlelist.push("<font size=2>"+titles[randomtitle].title+" ("+titles[randomtitle].htg+")</font><br>/title "+titles[randomtitle].key+"<span id='title"+randomtitle+"' class='col-button-s'>button</span>");
 }
 
 if (xs === "cheeses" || "firsts" || "saves" || "accessories" || "hardmode" || "divines" || "bootcamps" || "xmas" || "halloweens" || "valentines" || "easters" || "fishings" || "carnavals" || "childrens" || "independences" || "admins" || "fools" || "school") {
@@ -107,12 +126,15 @@ if (xs === "cheeses" || "firsts" || "saves" || "accessories" || "hardmode" || "d
       });
 
       for (var i = 0; i < keywordlist.length; i++) {
-        titlelist.push("<font size=2>" + keywordlist[i].title + " (" + keywordlist[i].htg + ")</font><br>/title " + keywordlist[i].key);
-      }
+        titlelist.push("<font size=2>"+keywordlist[i].title+" ("+keywordlist[i].htg+")</font><br>/title "+keywordlist[i].key);
+	  }
     }
-  }
+}
+
+var copying = "var cfg={caption:'C',height:'20',width:'20',clr_bck:'eaeaea',clr_txt:'111111'};"+copylist.join("");
 
 document.getElementById("command").innerHTML = titlelist.join("<br>");
+eval(copying);
 
 if (catmode == 1) {
 	cat = document.getElementById("command").innerHTML;
