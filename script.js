@@ -5,6 +5,17 @@ var titles=[{key:"0",title:"Little Mouse",type:"cheeses",htg:"Gather 0 cheese"},
 function doBG() {
 	document.body.style.background = colorlist[color];
 }
+catmode = 0;
+function cat() {
+	if (catmode == 0) {
+		catmode = 1;
+		document.getElementById("cat").innerHTML = "cat-mode: 1";
+	}
+	else if (catmode == 1) {
+		catmode = 0;
+		document.getElementById("cat").innerHTML = "cat-mode: 0";
+	}
+}
 function ab(x) {
 	return atob(x);
 }
@@ -102,6 +113,13 @@ if (xs === "cheeses" || "firsts" || "saves" || "accessories" || "hardmode" || "d
 
 document.getElementById("command").innerHTML = titlelist.join("<br>");
 
+if (catmode == 1) {
+	cat = document.getElementById("command").innerHTML;
+	cat = cat.replace(/mouse/gi, "Cat");
+	cat = cat.replace(/mice/gi, "Cat");
+	document.getElementById("command").innerHTML = cat;
+}
+
 if (xs && isNaN(xs) === true) {
 	for (var i = 0; i < sn.length; i++){
 		if (xs == sn[i]){
@@ -126,7 +144,19 @@ if (sm) {
 	document.getElementById("secret").innerHTML = "";
 }
 
+function cat() {
+	if (catmode == 0) {
+		catmode = 1;
+		document.getElementById("cat").innerHTML = "cat-mode: 1";
+	}
+	else if (catmode == 1) {
+		catmode = 0;
+		document.getElementById("cat").innerHTML = "cat-mode: 0";
+	}
 }
+
+}
+
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
