@@ -93,23 +93,24 @@ if (xs === "random") {
 }
 
 if (xs === "cheeses" || "firsts" || "saves" || "accessories" || "hardmode" || "divines" || "bootcamps" || "xmas" || "halloweens" || "valentines" || "easters" || "fishings" || "carnavals" || "childrens" || "independences" || "admins" || "fools" || "school") {
-	for (var i = 0; i < titles.length; i++){
-		if (titles[i].type === xs) {
-		        titlelist.push("<font size=2>"+titles[i].title+" ("+titles[i].htg+")</font><br>/title "+titles[i].key);
-		}
-	}
-	
-	if (keywordlist !== 0) {
-    	keywordlist.sort(function(a,b){
-            var alc = parseInt(a.htg), blc = parseInt(b.htg);
-            return alc > blc ? 1 : alc < blc ? -1 : 0;
-        });
-    
-        for(var o in keywordlist) {
-        titlelist.push(keywordlist[o].html);
-        }
-	}
-}
+    for (var i = 0; i < titles.length; i++) {
+      if (titles[i].type === xs) {
+        keywordlist.push(titles[i]);
+      }
+    }
+
+    if (keywordlist !== 0) {
+      keywordlist.sort(function(a, b) {
+        var alc = parseInt(a.htg.replace(/^\D+|\D+$/g, "")),
+          blc = parseInt(b.htg.replace(/^\D+|\D+$/g, ""));
+        return alc > blc ? 1 : alc < blc ? -1 : 0;
+      });
+
+      for (var i = 0; i < keywordlist.length; i++) {
+        titlelist.push("<font size=2>" + keywordlist[i].title + " (" + keywordlist[i].htg + ")</font><br>/title " + keywordlist[i].key);
+      }
+    }
+  }
 
 document.getElementById("command").innerHTML = titlelist.join("<br>");
 
