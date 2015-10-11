@@ -153,8 +153,8 @@ if (catmode == 1) {
 	document.getElementById("command").innerHTML = cat;
 }
 
-if (sn.xs) {
-	sm = sn.xs;
+if (sn[xs]) {
+	sm = sn[xs];
 }
 
 
