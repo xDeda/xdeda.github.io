@@ -153,13 +153,10 @@ if (catmode == 1) {
 	document.getElementById("command").innerHTML = cat;
 }
 
-if (xs && isNaN(xs) === true) {
-	for (var i = 0; i < sn.length; i++){
-		if (xs == sn[i]){
-			sm = sn[i];
-		}
-	}
+if (sn.xs) {
+	sm = sn.xs;
 }
+
 
 if(xs === ab("YnV0dHM=")) {
 	document.body.style.fontFamily="Comic Sans MS";
