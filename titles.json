@@ -1752,16 +1752,22 @@
     "htg": "India Independence Day"
   },
   {
+    "key": "371",
+    "title": "Voldemouse",
+    "type": "halloweens",
+    "htg": "Buy from Voldemouse in the slots map (Halloween 2015)"
+  },
+  {
   	"key": "372",
   	"title": "Scooby-Doo",
   	"type": "halloweens",
-  	"htg": "Halloween 2015"
+  	"htg": "Get 3 carrots in the left slot machine (Halloween 2015)"
   },
   {
   	"key": "373",
   	"title": "The Cursed",
   	"type": "halloweens",
-  	"htg": "Halloween 2015"
+  	"htg": "Get 3 carrots in the middle slot machine  (Halloween 2015)"
   },
   {
     "key": "440",
