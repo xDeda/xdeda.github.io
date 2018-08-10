@@ -22,6 +22,7 @@
        }
      return(false);
   }
+  var para = getQueryVariable("title");
   </script>
 </head>
 
@@ -89,5 +90,5 @@
 
 </div>
 <script src="script.js"></script>
-<script>document.getElementById("title").value = getQueryVariable("title")</script>
+<script>document.getElementById("title").value = para;</script>
 </body></html>
