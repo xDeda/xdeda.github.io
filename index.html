@@ -22,12 +22,11 @@
        }
      return(false);
   }
-  document.getElementByID("title").value = getQueryVariable("title");
   </script>
 </head>
 
 
-<body><div class="box">
+<body onload="document.getElementByID('title').value = getQueryVariable('title');"><div class="box">
 
   <header class="row header">
 
