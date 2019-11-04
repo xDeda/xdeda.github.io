@@ -1,195 +1,538 @@
-var colorlist = ["#FFD3D3", "#FFE7D3", "#C9F3F3", "#CEF9CE","#C5B8FB","#9FFD9F","#81E2E2","#CD9EDC","#FFF89E","#DC8172","#FDECAD","#F58095","#D29AEF","#9C90FF","#73ADDE","#BEFBC5","#FDBE68"];
-var color = Math.floor(Math.random()*colorlist.length);
-var sn = [];
-$.ajax({url: "sn.json", async: false, complete: function( xhr, status ) {
- if( xhr.status = 200 ) {
- sn = $.parseJSON( xhr.response );
- }
-}});
-var titles = []
-$.ajax({url: "titles.json", async: false, complete: function( xhr, status ) {
- if( xhr.status == 200 ) {
- titles = $.parseJSON( xhr.response );
- }
-}});
-function doBG() {
-	document.body.style.background = colorlist[color];
-}
-var catmode = 0;
-var addcopy = 0;
-function cat() {
-	if (catmode == 0) {
-		catmode = 1;
-		document.getElementById("cat").innerHTML = "cat-mode: on";
-	}
-	else if (catmode == 1) {
-		catmode = 0;
-		document.getElementById("cat").innerHTML = "cat-mode: off";
-	}
-}
-function ab(x) {
-	return atob(x);
-}
-function link(msg) {
-	switch(msg) {
-		case 0: msg = "full list"; break;
-		case 1: msg = "cheeses"; break;
-		case 2: msg = "firsts"; break;
-		case 3: msg = "saves"; break;
-		case 4: msg = "hardmodes"; break;
-		case 5: msg = "divines"; break;
-		case 6: msg = "bootcamps"; break;
-		case 7: msg = "accessories"; break;
-		case 8: msg = "fishings"; break;
-		case 9: msg = "independences"; break;
-		case 10: msg = "easters"; break;
-		case 11: msg = "childrens"; break;
-		case 12: msg = "halloweens"; break;
-		case 13: msg = "xmas"; break;
-		case 14: msg = "school"; break;
-		case 15: msg = "carnavals"; break;
-		case 16: msg = "valentines"; break;
-		case 17: msg = "help"; break;
-		case 18: msg = "credits"; break;
-		case 19: msg = "random"; break;
-	}	
-	document.getElementById("title").value = msg;
-	doStuff();
-}
-function an0de() {
-	document.getElementById("command").innerHTML = '<iframe width="100%" height="400" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/149460370&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>';
-}
-function doStuff() {
-document.getElementById("command").className = "command";
-setTimeout(function () {document.getElementById("command").className = "command show";}, 25);  
-var tinput = document.getElementById("title").value;
-var xs = tinput.toLowerCase();
-var found = [];
-var sm;
-var keywordlist = [];
-var titlelist = [];
-var copylist = [];
-var randomtitle;
-var titlecmd;
+(function() {
+    let titles = [];
+    let secrets = {};
+    let catModeOn = false;
+    let currentTitlesShown = null;
 
-if (xs && isNaN(xs) === false) {
-	for (var i = 0; i < titles.length; i++){
-        if (titles[i].key.toLowerCase().indexOf(xs) != -1) {
-	    	if (titlelist.length == 0) {
-		    	titlecmd = "/title "+titles[i].key;
-				copylist.push("lmc_id="+i+";lmc_set_dom_html('title"+i+"',lmc_get_button('"+titlecmd+"',"+i+",cfg));");
-	    	    titlelist.push("<font size=2>/title "+titles[i].key+"<span id='title"+i+"' class='col-button'>button</span></font><br>"+titles[i].title+" ("+titles[i].htg+")");
-			} else {
-				titlelist.push("<font size=2>/title "+titles[i].key+"</font><br>"+titles[i].title+" ("+titles[i].htg+")");
-			}
-	    }
-    }
-}
+    function $ify(el) {
+        if (!el) {
+            return el;
+        }
 
-if (xs && xs.length >= 2 && isNaN(xs) === true) {
-	for (var i = 0; i < titles.length; i++){
-	    if (titles[i].title.toLowerCase().indexOf(xs) != -1) {
-	    	if (titlelist.length == 0) {
-		    	titlecmd = "/title "+titles[i].key;
-				copylist.push("lmc_id="+i+";lmc_set_dom_html('title"+i+"',lmc_get_button('"+titlecmd+"',"+i+",cfg));");
-				titlelist.push("<font size=2>"+titles[i].title+" ("+titles[i].htg+")</font><br>/title "+titles[i].key+"<span id='title"+i+"' class='col-button-s'>button</span>");
-			} else {
-				titlelist.push("<font size=2>"+titles[i].title+" ("+titles[i].htg+")</font><br>/title "+titles[i].key);
-			}
-	    }
-	}
-}
+        el.appendText = function(text) {
+            const lines = text.split(/\r?\n/);
+            let first = true;
 
+            lines.forEach(function(line) {
+                if (first) {
+                    first = false;
+                } else {
+                    el.appendChild(document.createElement('br'));
+                }
 
-if (xs === "full list") {
-	for (var i = 0; i < titles.length; i++){
-		titlelist.push("<font size=2>"+titles[i].title+" ("+titles[i].htg+")</font><br>/title "+titles[i].key);
-	}
-}
+                el.appendChild(document.createTextNode(line));
+            });
 
-if (xs === "help") {
-	titlelist.push("<h2>Use the box to the right of the logo.</h2><h4>- Type part of a title or type the title number.<br>- Press the little \"C\" button to copy.<br>- The links in the top will show you titles from specific achievements.</h4>There might be a few hidden features as well."); }
+            return el;
+        };
 
-if (xs === "credits") {
-	titlelist.push("<h3>Creation:</h3> Dedax <h3>Banner:</h3> Jacobmood <h4>Suggestions from:</h4>Elizalove, Levelup, Epilepsy, Imaginist<br><br><b>Copy-button:</b> <a href='http://www.lettersmarket.com/lmcbutton.html'>lmcbutton2</a>");
-}
+        el.append = function() {
+            for (let i = 0; i < arguments.length; ++i) {
+                if (typeof(arguments[i]) === 'string') {
+                    el.appendText(arguments[i]);
+                } else {
+                    el.appendChild(arguments[i]);
+                }
+            }
 
-if (xs === "random") {
-	var randomtitle = Math.floor(Math.random()*titles.length);
-	titlecmd = "/title "+titles[randomtitle].key;
-	copylist.push("lmc_id="+randomtitle+";lmc_set_dom_html('title"+randomtitle+"',lmc_get_button('"+titlecmd+"',"+randomtitle+",cfg));");
-	titlelist.push("<font size=2>"+titles[randomtitle].title+" ("+titles[randomtitle].htg+")</font><br>/title "+titles[randomtitle].key+"<span id='title"+randomtitle+"' class='col-button-s'>button</span>");
-}
+            return el;
+        };
 
-if (xs === "cheeses" || "firsts" || "saves" || "accessories" || "hardmode" || "divines" || "bootcamps" || "xmas" || "halloweens" || "valentines" || "easters" || "fishings" || "carnavals" || "childrens" || "independences" || "admins" || "fools" || "school") {
-    for (var i = 0; i < titles.length; i++) {
-      if (titles[i].type === xs) {
-        keywordlist.push(titles[i]);
-      }
+        el.clearChildren = function() {
+            while (el.firstChild) {
+                el.removeChild(el.firstChild);
+            }
+
+            return el;
+        };
+
+        return el;
     }
 
-    if (keywordlist !== 0) {
-      keywordlist.sort(function(a, b) {
-        var alc = parseInt(a.htg.replace(/^\D+|\D+$/g, "")),
-          blc = parseInt(b.htg.replace(/^\D+|\D+$/g, ""));
-        return alc > blc ? 1 : alc < blc ? -1 : 0;
-      });
+    // $(arg, [attributes,] [child, [child, [...]]])
+    function $(arg) {
+        if (arg.slice(0, 1) == '.') {
+            return Array.from(document.getElementsByClassName(arg.slice(1))).map($ify);
+        } else if (arg.slice(0, 1) == '#') {
+            return $ify(document.getElementById(arg.slice(1)));
+        }
 
-      for (var i = 0; i < keywordlist.length; i++) {
-        titlelist.push("<font size=2>"+keywordlist[i].title+" ("+keywordlist[i].htg+")</font><br>/title "+keywordlist[i].key);
-	  }
+        const el = document.createElement(arg);
+
+        for (let i = 1; i < arguments.length; ++i) {
+            const obj = arguments[i];
+
+            if (obj) {
+                if ((typeof(obj) === 'object') && !(obj instanceof Element) && !obj.append) {
+                    Object.keys(obj).forEach(function(key) {
+                        el.setAttribute(key, obj[key]);
+                    });
+                } else {
+                    el.append(obj);
+                }
+            }
+        }
+
+        return el;
     }
-}
 
-var copying = "var cfg={caption:'C',height:'20',width:'20',clr_bck:'eaeaea',clr_txt:'111111'};"+copylist.join("");
+    function getHash() {
+        return decodeURI(location.hash.slice(1).toLowerCase());
+    }
 
-document.getElementById("command").innerHTML = titlelist.join("<br>");
-eval(copying);
+    function setSecretMessage(message) {
+        const span = $('#secret-message');
 
-if (catmode == 1) {
-	cat = document.getElementById("command").innerHTML;
-	cat = cat.replace(/mouse/gi, "Cat");
-	cat = cat.replace(/mice/gi, "Cat");
-	document.getElementById("command").innerHTML = cat;
-}
+        if (message.length > 0) {
+            span.clearChildren();
+            span.append(' | ' + message);
+        } else {
+            span.clearChildren();
+        }
+    }
 
-if (sn[xs]) {
-	sm = sn[xs];
-}
+    // Fade all children of el out and then run callback
+    function fadeChildrenOut(el, callback) {
+        if (el.childNodes.length === 0) {
+            callback();
+            return;
+        }
+
+        // Fade out animation length is constant, so it's fine to just call it on the first element's animationend
+        let callbackSet = false;
+
+        for (let i = 0; i < el.childNodes.length; ++i) {
+            if (!callbackSet) {
+                el.childNodes[i].addEventListener('animationend', function() {
+                    el.clearChildren();
+                    callback();
+                });
+
+                callbackSet = true;
+            }
+
+            el.childNodes[i].classList.add('fade-out');
+        }
+    }
+
+    function showTitles(titles) {
+        const content = $('#content');
+
+        titles.forEach(function(title) {
+            const titleSection = $('section');
+            const copySpan = $('span',
+                {
+                    'class': 'copy-span'
+                },
+                $('a',
+                    {
+                        'class': 'copy-link',
+                        'href': '#',
+                        'title': 'Click to copy'
+                    },
+                    '/title ' + title.id
+                )
+            );
+
+            copySpan.onclick = (function(copySpan) {
+                return function() {
+                    // https://stackoverflow.com/a/987376
+                    const rng = document.createRange();
+                    rng.selectNodeContents(copySpan);
+
+                    const sel = window.getSelection();
+                    sel.removeAllRanges();
+                    sel.addRange(rng);
+
+                    document.execCommand('copy');
+
+                    sel.removeAllRanges();
+
+                    const popup = $('span',
+                        {
+                            'class': 'popup'
+                        },
+                        'Copied'
+                    );
+
+                    popup.onanimationend = function() {
+                        popup.parentNode.removeChild(popup);
+                    };
+
+                    copySpan.appendChild(popup);
+
+                    return false;
+                };
+            })(copySpan, title.id);
+
+            let titleText = title.name;
+
+            if (title.altName) {
+                titleText = title.altName + ' / ' + titleText;
+            }
+
+            if (catModeOn) {
+                titleText = titleText.replace('Mouse', 'Cat')
+                    .replace('mouse', 'cat')
+                    .replace('Maus', 'Katze')
+                    .replace('maus', 'katze')
+                    .replace('Souris', 'Chat')
+                    .replace('souris', 'chat');
+            }
+
+            titleSection.append(
+                $('p',
+                    $('span', { 'class': 'title' }, titleText),
+                    ' ',
+                    copySpan
+                )
+            );
+
+            let description;
+
+            if (title.id === 138) {
+                description = $('a',
+                    {
+                        'href': 'http://www.youtube.com/watch?v=dQw4w9WgXcQ'
+                    },
+                    title.description
+                );
+            } else {
+                description = title.description;
+            }
+
+            titleSection.append(
+                $('p',
+                    { 'class': 'title-description' },
+                    description
+                )
+            );
+
+            content.append(titleSection);
+        });
+
+        currentTitlesShown = titles;
+    }
+
+    function showHelp() {
+        currentTitlesShown = null;
+
+        const content = $('#content');
+
+        fadeChildrenOut(content, function() {
+            content.append(
+                $('h2', 'Search for a title using the box to the right of the logo.'),
+                $('ul',
+                    $('li', 'Type part of a title or type the title number.'),
+                    $('li', 'Click ', $('span', { 'class': 'copy-link' }, '/title #'), ' to copy.'),
+                    $('li', 'The links below the logo will show you titles in that category.')
+                ),
+                $('p', 'There might be a few hidden features, as well.')
+            );
+        });
+    }
+
+    function showCredits() {
+        currentTitlesShown = null;
+
+        const content = $('#content');
+
+        fadeChildrenOut(content, function() {
+            content.append(
+                $('h2', 'Creator'),
+                $('p', 'Dedax'),
+                $('h2', 'Banner'),
+                $('p', 'Jacobmood'),
+                $('h2', 'Icons'),
+                $('p', 'EmojiOne 2.0'),
+                $('h2', 'Suggestions from'),
+                $('p', 'Elizalove, Levelup, Epilepsy, Imaginist')
+            );
+        });
+    }
+
+    function showAllTitles() {
+        fadeChildrenOut($('#content'), function() {
+            showTitles(titles);
+        });
+    }
+
+    function showRandomTitle() {
+        const idx = Math.floor(Math.random() * titles.length);
+
+        fadeChildrenOut($('#content'), function() {
+            showTitles(titles.slice(idx, idx + 1));
+        });
+    }
+
+    function showMatches(query) {
+        const content = $('#content');
+
+        query = query.toLowerCase().trim();
+
+        if (query === '' || (query.length < 2) && isNaN(query)) {
+            return;
+        }
 
 
-if(xs === ab("YnV0dHM=")) {
-	document.body.style.fontFamily="Comic Sans MS";
-}
+        if (query === atob('YnV0dHM=')) {
+            document.body.classList.add('zoop');
+            return;
+        } else if (query === atob('YW15')) {
+            if (!$('#m')) {
+                fadeChildrenOut(content, function() {
+                    content.appendChild($('span', { 'id': 'm' }, $('span', { 'id': 'n' })));
+                });
+            }
+            return;
+        } else if (secrets && secrets[query]) {
+            setSecretMessage(secrets[query]);
+            return;
+        }
 
-if(xs === ab("YW15")) {
-	document.getElementById(ab("YW15Y29udGFpbmVy")).style.display = "block";
-} else {
-	document.getElementById(ab("YW15Y29udGFpbmVy")).style.display = "none";
-}
+        setSecretMessage('');
 
-if (sm) {
-	document.getElementById("secret").innerHTML = "| <b>"+sm+"</b>";
-} else {
-	document.getElementById("secret").innerHTML = "";
-}
+        const matches = titles.filter(function(title) {
+            return (
+                title.name.toLowerCase().includes(query) ||
+                (title.altName && title.altName.toLowerCase().includes(query)) ||
+                title.id.toString().includes(query)
+            );
+        });
 
-function cat() {
-	if (catmode == 0) {
-		catmode = 1;
-		document.getElementById("cat").innerHTML = "cat-mode: on";
-	}
-	else if (catmode == 1) {
-		catmode = 0;
-		document.getElementById("cat").innerHTML = "cat-mode: off";
-	}
-}
+        fadeChildrenOut(content, function() {
+            if (matches.length > 0) {
+                showTitles(matches);
+            } else {
+                content.append($('p', 'Nobody here but us chickens...'));
+            }
+        });
+    }
 
-}
+    function showTag(tag) {
+        const matches = titles.filter(function(title) {
+            return title.tags.includes(tag);
+        });
 
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-68128014-1', 'auto');
-ga('send', 'pageview');
+        fadeChildrenOut($('#content'), function() {
+            showTitles(matches);
+        });
+    }
+
+    function navigate() {
+        const hash = getHash();
+
+        if (hash === 'credits') {
+            showCredits();
+        } else if (hash === 'all') {
+            showAllTitles();
+        } else if (hash === 'random') {
+            showRandomTitle();
+        } else if (hash.slice(0, 4) === 'tag/') {
+            const tag = hash.slice(4);
+
+            showTag(tag);
+        } else {
+            showHelp();
+        }
+    }
+
+    function createFooter() {
+        const footer = $('#footer');
+
+        footer.append($('h2', 'Super cool links', $('span', { 'id': 'secret-message' } )));
+
+        $('#header-link').onclick = function() {
+            if (getHash() === 'help') {
+                showHelp();
+            }
+        };
+
+        const helpLink = $('a', { 'href': '#help' }, 'Help');
+        const creditsLink = $('a', { 'href': '#credits' }, 'Credits');
+
+        helpLink.onclick = function() {
+            if (getHash() === 'help') {
+                showHelp();
+            }
+        };
+
+        creditsLink.onclick = function() {
+            if (getHash() === 'credits') {
+                showCredits();
+            }
+        };
+
+        const links = $('ul');
+        links.append($('li', $('a', { 'href': 'https://transformice.com/' }, 'transformice.com')));
+        links.append($('li', $('a', { 'href': 'https://instagram.com/jegerniclas/' }, 'Creator\'s Instagram')));
+        links.append($('li', helpLink));
+        links.append($('li', creditsLink));
+        links.append($('li', $('a', { 'href': 'https://github.com/xDeda/xdeda.github.io' }, 'GitHub Repository')));
+
+        footer.append(links);
+
+        // Add cat mode button
+        const mouseIcon = 'mouse.png';
+        const catIcon = 'cat.png';
+
+        const catButton = $('img',
+            {
+                'src': mouseIcon,
+                'alt': 'cat mode',
+                'width': 32,
+                'height': 32
+            }
+        );
+
+        const catLink = $('a',
+            {
+                'href': '#',
+                'id': 'cat-link'
+            },
+            catButton
+        );
+
+        catLink.onclick = function() {
+            if (catModeOn === false) {
+                catModeOn = true;
+                catButton.src = catIcon;
+            } else {
+                catModeOn = false;
+                catButton.src = mouseIcon;
+            }
+
+            if (currentTitlesShown) {
+                fadeChildrenOut($('#content'), function() {
+                    showTitles(currentTitlesShown);
+                });
+            }
+
+            return false;
+        };
+
+        footer.appendChild(catLink);
+    }
+
+    function loadData(titles, listedTags) {
+        const header = $('#header');
+        const nav = $('#nav');
+
+        // Add search box
+        const searchInput = $('input',
+            {
+                'id': 'search',
+                'type': 'text',
+                'placeholder': 'search for title'
+            }
+        );
+
+        const invisibleKeys = [
+            'Alt',
+            'ArrowDown',
+            'ArrowLeft',
+            'ArrowRight',
+            'ArrowUp',
+            'CapsLock',
+            'Control',
+            'End',
+            'Escape',
+            'Home',
+            'NumLock',
+            'PageDown',
+            'PageUp',
+            'PrintScreen',
+            'ScrollLock',
+            'Shift',
+            'Tab'
+        ];
+
+        searchInput.addEventListener('keyup', function(event) {
+            if (invisibleKeys.includes(event.key)) {
+                return;
+            }
+
+            showMatches(searchInput.value);
+        });
+
+        searchInput.addEventListener('paste', function() {
+            showMatches(searchInput.value);
+        });
+
+        header.insertBefore(searchInput, header.childNodes[2]);
+
+        // Add links to tags
+        function addLink(text, hash, onclick) {
+            const link = $('a', { 'href': '#' + hash }, text);
+            link.onclick = onclick;
+            nav.append($('li', link));
+        }
+
+        addLink('All Titles', 'all', showAllTitles);
+        addLink('Random', 'random', showRandomTitle);
+
+        listedTags.forEach(function(tag) {
+            addLink(tag, 'tag/' + tag.toLowerCase(), (function() {
+                return function() {
+                    showTag(tag.toLowerCase());
+                };
+            })(tag));
+        });
+
+        if (getHash() === '') {
+            showHelp();
+        } else {
+            navigate();
+        }
+    }
+
+    function init() {
+        const content = $('#content');
+
+        content.append($('p', 'Loading...'));
+
+        function showErrorMessage() {
+            fadeChildrenOut(content, function() {
+                content.append($('p', 'An error occurred while attempting to retrieve the titles. Please try refreshing the page.'));
+            });
+        }
+
+        createFooter();
+
+        // Load title data
+        const req = new XMLHttpRequest();
+
+        req.onload = function() {
+            if (req.status < 400) {
+                let configParsed = false;
+                let listedTags = [];
+
+                try {
+                    const config = JSON.parse(req.response);
+
+                    titles = config.titles; // Global
+                    listedTags = config.listedTags;
+                    secrets = config.secrets; // Global
+
+                    configParsed = true;
+                } catch (e) {
+                    showErrorMessage();
+                }
+
+                if (configParsed) {
+                    loadData(titles, listedTags);
+                }
+            } else {
+                showErrorMessage();
+            }
+        };
+
+        req.onerror = showErrorMessage;
+
+        req.open('GET', 'config.json');
+        req.send();
+    }
+
+    window.onload = init;
+    window.onhashchange = navigate;
+})();
