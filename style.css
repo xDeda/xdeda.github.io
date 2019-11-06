@@ -1,10 +1,9 @@
 body {
     background: #fbfbfb;
-    border-top: 5px solid #444;
     display: flex;
     flex-direction: column;
     font: 1em 'Helvetica', 'Arial', sans-serif;
-    height: calc(100vh - 5px);
+    height: 100vh;
     margin: 0;
     padding: 0;
 }
@@ -17,6 +16,28 @@ a {
 a:hover {
     color: #111;
     text-decoration: underline;
+}
+
+#page-border {
+    animation: .8s page-border ease-out;
+    border-top: 5px solid #444;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+}
+
+@keyframes page-border {
+    from {
+        opacity: 0;
+        width: 0vw;
+    }
+
+    to {
+        opacity: 1;
+        width: 100vw;
+    }
 }
 
 #header-wrapper {
