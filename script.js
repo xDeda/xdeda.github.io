@@ -211,7 +211,7 @@
 
                 this.showTitles(matches);
             },
-            'showTitles': function(titles) {
+            'showTitles': function(titles, forceRefresh) {
                 if (titles.length === 0) {
                     if (this.currentTitlesShown.length === 0) {
                         return;
@@ -222,7 +222,7 @@
                     return;
                 }
 
-                if (arraysEqual(titles, this.currentTitlesShown)) {
+                if (arraysEqual(titles, this.currentTitlesShown) && !forceRefresh) {
                     return;
                 }
 
@@ -333,7 +333,7 @@
                 this.catModeOn = !this.catModeOn;
 
                 if (this.currentTitlesShown) {
-                    this.showTitles(this.currentTitlesShown);
+                    this.showTitles(this.currentTitlesShown, true);
                 }
             }
         };
