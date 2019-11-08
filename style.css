@@ -8,16 +8,6 @@ body {
     padding: 0;
 }
 
-a {
-    color: #38e;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #111;
-    text-decoration: underline;
-}
-
 #page-border {
     animation: .8s page-border ease-out;
     border-top: 5px solid #444;
@@ -42,7 +32,7 @@ a:hover {
 
 #header-wrapper {
     border-bottom: 1px solid #e3e3e3;
-    padding: .6em 0 .8em;
+    padding: .8em 0;
     font-size: .9em;
 }
 
@@ -53,7 +43,7 @@ a:hover {
 
 #footer-wrapper {
     border-top: 1px solid #e3e3e3;
-    padding: .6em 0 .8em;
+    padding: .6em 0 1.2em;
     font-size: 1em;
 }
 
@@ -61,12 +51,6 @@ header, footer {
     animation: 0.5s fade-in ease-in;
     margin: 0 auto;
     max-width: 740px;
-}
-
-#content {
-    margin: 0 auto;
-    max-width: 720px;
-    padding: 1.5em 0 .5em;
 }
 
 h1 {
@@ -93,122 +77,42 @@ h1 a {
     margin-left: 1em;
 }
 
-#content section {
-    margin-bottom: 1em;
-}
-
-#content h2 {
-    margin: 1em 0 .5em;
-}
-
-#content h2:first-child {
-    margin-top: 0;
-}
-
-#content li {
-    margin: .5em 0;
-}
-
-#content p {
-    margin: 0;
-}
-
-.title {
-    font-weight: bold;
-}
-
-.title-description {
-    text-indent: 2em;
-}
-
-.copy-span {
-    position: relative;
-}
-
-.copy-span .copy-link {
-    margin-left: 1em;
-}
-
-.copy-link {
-    font-size: .8em;
-    color: #999;
-}
-
-.copy-link:hover {
-    color: #666;
-}
-
-.copy-span .popup {
-    animation: 1.5s popup-fade-out ease-out;
-    background: #fcfcf3;
-    border: 1px solid #ccc;
-    left: 2em;
-    padding: 0.2em 0.4em;
-    position: absolute;
-    text-transform: lowercase;
-    top: 0.5em;
-    user-select: none;
-    z-index: 999;
-}
-
-@keyframes popup-fade-out {
-    0%, 50% {
-        opacity: 1;
-    }
-
-    85%, 100% {
-        opacity: 0;
-    }
-}
-
-nav ul {
+#nav {
     margin: 0;
     padding: 0;
     text-transform: lowercase;
 }
 
-nav ul li {
+#nav li {
     display: inline;
     list-style: none;
 }
 
-nav ul li::after {
+#nav li::after {
     content: ' | ';
 }
 
-nav ul li:last-child::after {
+#nav li:last-child::after {
     content: none;
 }
 
-footer h2 {
-    font-size: 1.2em;
-    margin: 0 0 0.25em;
+a {
+    color: #38e;
+    text-decoration: none;
 }
 
-footer ul {
-    text-transform: lowercase;
-    margin: 0;
-    padding: 0;
+a:hover {
+    color: #111;
+    text-decoration: underline;
 }
 
-footer ul li {
-    display: inline;
-    list-style: none;
+#content {
+    margin: 0 auto;
+    max-width: 720px;
+    padding: 1.5em 0 .5em;
 }
 
-footer ul li::after {
-    content: ' | ';
-}
-
-footer ul li:last-child::after {
-    content: none;
-}
-
-#message {
-    display: none;
-}
-
-.fade-in, #content > * {
+#content > * {
     animation: 0.2s fade-in ease-in;
 }
 
@@ -237,10 +141,107 @@ footer ul li:last-child::after {
     }
 }
 
+#content section {
+    margin-bottom: 1.5em;
+}
+
+#content h2 {
+    margin: 1em 0 .5em;
+}
+
+#content h2:first-child {
+    margin-top: 0;
+}
+
+#content li {
+    margin: .5em 0;
+}
+
+#content p {
+    margin: 0 0 .8em;
+}
+
+#content p .title {
+    font-weight: bold;
+}
+
+#content p.title-description {
+    text-indent: 2em;
+}
+
+#content p .copy-span {
+    position: relative;
+}
+
+#content p .copy-span .copy-link {
+    margin-left: 1em;
+}
+
+#content .copy-link {
+    font-size: .8em;
+    color: #999;
+}
+
+#content .copy-link:hover {
+    color: #666;
+}
+
+#content p .copy-span .popup {
+    animation: 1.5s popup-fade-out ease-out;
+    background: #fcfcf3;
+    border: 1px solid #ccc;
+    left: 2em;
+    padding: 0.2em 0.4em;
+    position: absolute;
+    text-transform: lowercase;
+    top: 0.5em;
+    user-select: none;
+    z-index: 999;
+}
+
+@keyframes popup-fade-out {
+    0%, 50% {
+        opacity: 1;
+    }
+
+    85%, 100% {
+        opacity: 0;
+    }
+}
+
+footer {
+    position: relative;
+}
+
+footer h2 {
+    font-size: 1.2em;
+    margin: 0 0 0.25em;
+}
+
+footer ul {
+    text-transform: lowercase;
+    margin: 0;
+    padding: 0;
+}
+
+footer ul li {
+    display: inline;
+    list-style: none;
+}
+
+footer ul li::after {
+    content: ' | ';
+}
+
+footer ul li:last-child::after {
+    content: none;
+}
+
 #cat-link {
     float: right;
-    position: relative;
-    top: -2.8em;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .zoop{
