@@ -177,9 +177,10 @@
             'showMatches': function(query) {
                 query = query.toLowerCase().trim();
 
-                if (query === '' || (query.length < 2) && isNaN(query)) {
+                if (this.secrets && this.secrets[query]) {
+                    setSecretMessage(this.secrets[query]);
+                } else {
                     setSecretMessage('');
-                    return;
                 }
 
                 if (query === atob('YnV0dHM=')) {
@@ -191,12 +192,6 @@
                         );
                     }
                     return;
-                }
-
-                if (this.secrets && this.secrets[query]) {
-                    setSecretMessage(this.secrets[query]);
-                } else {
-                    setSecretMessage('');
                 }
 
                 const matches = this.titles.filter(function(title) {
