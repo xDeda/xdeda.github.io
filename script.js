@@ -448,36 +448,22 @@
             }
         );
 
-        const invisibleKeys = [
-            'Alt',
-            'ArrowDown',
-            'ArrowLeft',
-            'ArrowRight',
-            'ArrowUp',
-            'CapsLock',
-            'Control',
-            'End',
-            'Escape',
-            'Home',
-            'NumLock',
-            'PageDown',
-            'PageUp',
-            'PrintScreen',
-            'ScrollLock',
-            'Shift',
-            'Tab'
-        ];
+        let searchTimeoutId = null;
+
+        function queueSearch(query) {
+            clearTimeout(searchTimeoutId);
+
+            searchTimeoutId = setTimeout(function() {
+                content.showMatches(query);
+            }, 250);
+        }
 
         searchInput.addEventListener('keyup', function(event) {
-            if (invisibleKeys.includes(event.key)) {
-                return;
-            }
-
-            content.showMatches(searchInput.value);
+            queueSearch(searchInput.value);
         });
 
         searchInput.addEventListener('paste', function() {
-            content.showMatches(searchInput.value);
+            queueSearch(searchInput.value);
         });
 
         header.insertBefore(searchInput, header.childNodes[2]);
