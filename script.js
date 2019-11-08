@@ -71,6 +71,24 @@
         return el;
     }
 
+    function arraysEqual(a, b) {
+        if (!a && !b) {
+            return true;
+        }
+
+        if (!a || !b || a.length !== b.length) {
+            return false;
+        }
+
+        for (let i = 0; i < a.length; ++i) {
+            if (a[i] !== b[i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     function getHash() {
         return decodeURI(location.hash.slice(1).toLowerCase());
     }
@@ -200,8 +218,16 @@
             },
             'showTitles': function(titles) {
                 if (titles.length === 0) {
+                    if (this.currentTitlesShown.length === 0) {
+                        return;
+                    }
+
                     this.replaceWith($('p', 'Nobody here but us chickens...'));
                     this.currentTitlesShown = [];
+                    return;
+                }
+
+                if (arraysEqual(titles, this.currentTitlesShown)) {
                     return;
                 }
 
