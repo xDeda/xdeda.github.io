@@ -1,9 +1,4 @@
 (function() {
-    let titles = [];
-    let secrets = {};
-    let catModeOn = false;
-    let currentTitlesShown = null;
-
     function $ify(el) {
         if (!el) {
             return el;
@@ -76,23 +71,30 @@
         return el;
     }
 
+    function arraysEqual(a, b) {
+        if (!a && !b) {
+            return true;
+        }
+
+        if (!a || !b || a.length !== b.length) {
+            return false;
+        }
+
+        for (let i = 0; i < a.length; ++i) {
+            if (a[i] !== b[i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     function getHash() {
         return decodeURI(location.hash.slice(1).toLowerCase());
     }
 
-    function setSecretMessage(message) {
-        const span = $('#secret-message');
-
-        if (message.length > 0) {
-            span.clearChildren();
-            span.append(' | ' + message);
-        } else {
-            span.clearChildren();
-        }
-    }
-
     // Fade all children of el out and then run callback
-    function fadeChildrenOut(el, callback) {
+    function fadeChildrenOutAndThen(el, callback) {
         if (el.childNodes.length === 0) {
             callback();
             return;
@@ -115,236 +117,256 @@
         }
     }
 
-    function showTitles(titles) {
-        const content = $('#content');
+    function setSecretMessage(message) {
+        const span = $('#secret-message');
 
-        titles.forEach(function(title) {
-            const titleSection = $('section');
-            const copySpan = $('span',
-                {
-                    'class': 'copy-span'
-                },
-                $('a',
-                    {
-                        'class': 'copy-link',
-                        'href': '#',
-                        'title': 'Click to copy'
-                    },
-                    '/title ' + title.id
-                )
-            );
+        if (message.length > 0) {
+            span.clearChildren();
+            span.append(' | ' + message);
+        } else {
+            span.clearChildren();
+        }
+    }
 
-            copySpan.onclick = (function(copySpan) {
-                return function() {
-                    // https://stackoverflow.com/a/987376
-                    const rng = document.createRange();
-                    rng.selectNodeContents(copySpan);
+    function ContentContainer(el) {
+        const contentContainer = {
+            'catModeOn': false,
+            'currentTitlesShown': null,
+            'el': el,
+            'titles': [],
+            'replaceWith': function() {
+                this.currentTitlesShown = null;
+                const els = arguments;
 
-                    const sel = window.getSelection();
-                    sel.removeAllRanges();
-                    sel.addRange(rng);
+                fadeChildrenOutAndThen(el, function() {
+                    for (let i = 0; i < els.length; ++i) {
+                        el.append(els[i]);
+                    }
+                });
+            },
+            'showHelp': function() {
+                this.replaceWith(
+                    $('h2', 'Search for a title using the box to the right of the logo.'),
+                    $('ul',
+                        $('li', 'Type part of a title or type the title number.'),
+                        $('li', 'Click ', $('span', { 'class': 'copy-link' }, '/title #'), ' to copy.'),
+                        $('li', 'The links below the logo will show you titles in that category.')
+                    ),
+                    $('p', 'There might be a few hidden features, as well.')
+                );
+            },
+            'showCredits': function() {
+                this.replaceWith(
+                    $('h2', 'Creator'),
+                    $('p', 'Dedax'),
+                    $('h2', 'Banner'),
+                    $('p', 'Jacobmood'),
+                    $('h2', 'Icons'),
+                    $('p', 'EmojiOne 2.0'),
+                    $('h2', 'Suggestions from'),
+                    $('p', 'Elizalove, Levelup, Epilepsy, Imaginist')
+                );
+            },
+            'showAllTitles': function() {
+                this.showTitles(this.titles);
+            },
+            'showRandomTitle': function() {
+                const idx = Math.floor(Math.random() * this.titles.length);
+                this.showTitles(this.titles.slice(idx, idx + 1));
+            },
+            'showMatches': function(query) {
+                query = query.toLowerCase().trim();
 
-                    document.execCommand('copy');
+                if (this.secrets && this.secrets[query]) {
+                    setSecretMessage(this.secrets[query]);
+                } else {
+                    setSecretMessage('');
+                }
 
-                    sel.removeAllRanges();
+                if (query === atob('YnV0dHM=')) {
+                    document.body.classList.add('zoop');
+                } else if (query === atob('YW15')) {
+                    if (!$('#m')) {
+                        this.replaceWith(
+                            $('span', { 'id': 'm' }, $('span', { 'id': 'n' }))
+                        );
+                    }
+                    return;
+                }
 
-                    const popup = $('span',
+                const matches = this.titles.filter(function(title) {
+                    return (
+                        title.name.toLowerCase().includes(query) ||
+                        (title.altName && title.altName.toLowerCase().includes(query)) ||
+                        title.id.toString().includes(query)
+                    );
+                });
+
+                this.showTitles(matches);
+            },
+            'showTag': function(tag) {
+                const matches = this.titles.filter(function(title) {
+                    return title.tags.includes(tag);
+                });
+
+                this.showTitles(matches);
+            },
+            'showTitles': function(titles, forceRefresh) {
+                if (titles.length === 0) {
+                    if (this.currentTitlesShown.length === 0) {
+                        return;
+                    }
+
+                    this.replaceWith($('p', 'Nobody here but us chickens...'));
+                    this.currentTitlesShown = [];
+                    return;
+                }
+
+                if (arraysEqual(titles, this.currentTitlesShown) && !forceRefresh) {
+                    return;
+                }
+
+                const titleSections = [];
+
+                titles.forEach(function(title) {
+                    const titleSection = $('section');
+                    const copySpan = $('span',
                         {
-                            'class': 'popup'
+                            'class': 'copy-span'
                         },
-                        'Copied'
+                        $('a',
+                            {
+                                'class': 'copy-link',
+                                'href': '#',
+                                'title': 'Click to copy'
+                            },
+                            '/title ' + title.id
+                        )
                     );
 
-                    popup.onanimationend = function() {
-                        popup.parentNode.removeChild(popup);
-                    };
+                    copySpan.onclick = (function(copySpan) {
+                        return function() {
+                            // https://stackoverflow.com/a/987376
+                            const rng = document.createRange();
+                            rng.selectNodeContents(copySpan);
 
-                    copySpan.appendChild(popup);
+                            const sel = window.getSelection();
+                            sel.removeAllRanges();
+                            sel.addRange(rng);
 
-                    return false;
-                };
-            })(copySpan, title.id);
+                            document.execCommand('copy');
 
-            let titleText = title.name;
+                            sel.removeAllRanges();
 
-            if (title.altName) {
-                titleText = title.altName + ' / ' + titleText;
-            }
+                            const popup = $('span',
+                                {
+                                    'class': 'popup'
+                                },
+                                'Copied'
+                            );
 
-            if (catModeOn) {
-                titleText = titleText.replace('Mouse', 'Cat')
-                    .replace('mouse', 'cat')
-                    .replace('Maus', 'Katze')
-                    .replace('maus', 'katze')
-                    .replace('Souris', 'Chat')
-                    .replace('souris', 'chat');
-            }
+                            popup.onanimationend = function() {
+                                popup.parentNode.removeChild(popup);
+                            };
 
-            titleSection.append(
-                $('p',
-                    $('span', { 'class': 'title' }, titleText),
-                    ' ',
-                    copySpan
-                )
-            );
+                            copySpan.appendChild(popup);
 
-            let description;
+                            return false;
+                        };
+                    })(copySpan, title.id);
 
-            if (title.id === 138) {
-                description = $('a',
-                    {
-                        'href': 'http://www.youtube.com/watch?v=dQw4w9WgXcQ'
-                    },
-                    title.description
-                );
-            } else {
-                description = title.description;
-            }
+                    let titleText = title.name;
 
-            titleSection.append(
-                $('p',
-                    { 'class': 'title-description' },
-                    description
-                )
-            );
+                    if (title.altName) {
+                        titleText = title.altName + ' / ' + titleText;
+                    }
 
-            content.append(titleSection);
-        });
+                    if (contentContainer.catModeOn) {
+                        titleText = titleText.replace('Mouse', 'Cat')
+                            .replace('mouse', 'cat')
+                            .replace('Maus', 'Katze')
+                            .replace('maus', 'katze')
+                            .replace('Souris', 'Chat')
+                            .replace('souris', 'chat');
+                    }
 
-        currentTitlesShown = titles;
-    }
+                    titleSection.append(
+                        $('p',
+                            $('span', { 'class': 'title' }, titleText),
+                            ' ',
+                            copySpan
+                        )
+                    );
 
-    function showHelp() {
-        currentTitlesShown = null;
+                    let description;
 
-        const content = $('#content');
+                    if (title.id === 138) {
+                        description = $('a',
+                            {
+                                'href': 'http://www.youtube.com/watch?v=dQw4w9WgXcQ'
+                            },
+                            title.description
+                        );
+                    } else {
+                        description = title.description;
+                    }
 
-        fadeChildrenOut(content, function() {
-            content.append(
-                $('h2', 'Search for a title using the box to the right of the logo.'),
-                $('ul',
-                    $('li', 'Type part of a title or type the title number.'),
-                    $('li', 'Click ', $('span', { 'class': 'copy-link' }, '/title #'), ' to copy.'),
-                    $('li', 'The links below the logo will show you titles in that category.')
-                ),
-                $('p', 'There might be a few hidden features, as well.')
-            );
-        });
-    }
+                    titleSection.append(
+                        $('p',
+                            { 'class': 'title-description' },
+                            description
+                        )
+                    );
 
-    function showCredits() {
-        currentTitlesShown = null;
-
-        const content = $('#content');
-
-        fadeChildrenOut(content, function() {
-            content.append(
-                $('h2', 'Creator'),
-                $('p', 'Dedax'),
-                $('h2', 'Banner'),
-                $('p', 'Jacobmood'),
-                $('h2', 'Icons'),
-                $('p', 'EmojiOne 2.0'),
-                $('h2', 'Suggestions from'),
-                $('p', 'Elizalove, Levelup, Epilepsy, Imaginist')
-            );
-        });
-    }
-
-    function showAllTitles() {
-        fadeChildrenOut($('#content'), function() {
-            showTitles(titles);
-        });
-    }
-
-    function showRandomTitle() {
-        const idx = Math.floor(Math.random() * titles.length);
-
-        fadeChildrenOut($('#content'), function() {
-            showTitles(titles.slice(idx, idx + 1));
-        });
-    }
-
-    function showMatches(query) {
-        const content = $('#content');
-
-        query = query.toLowerCase().trim();
-
-        if (query === '' || (query.length < 2) && isNaN(query)) {
-            return;
-        }
-
-
-        if (query === atob('YnV0dHM=')) {
-            document.body.classList.add('zoop');
-            return;
-        } else if (query === atob('YW15')) {
-            if (!$('#m')) {
-                fadeChildrenOut(content, function() {
-                    content.appendChild($('span', { 'id': 'm' }, $('span', { 'id': 'n' })));
+                    titleSections.push(titleSection);
                 });
+
+                this.currentTitlesShown = titles;
+
+                fadeChildrenOutAndThen(el, function() {
+                    for (let i = 0; i < titleSections.length; ++i) {
+                        el.append(titleSections[i]);
+                    }
+                });
+            },
+            'toggleCatMode': function() {
+                this.catModeOn = !this.catModeOn;
+
+                if (this.currentTitlesShown) {
+                    this.showTitles(this.currentTitlesShown, true);
+                }
             }
-            return;
-        } else if (secrets && secrets[query]) {
-            setSecretMessage(secrets[query]);
-            return;
-        }
+        };
 
-        setSecretMessage('');
-
-        const matches = titles.filter(function(title) {
-            return (
-                title.name.toLowerCase().includes(query) ||
-                (title.altName && title.altName.toLowerCase().includes(query)) ||
-                title.id.toString().includes(query)
-            );
-        });
-
-        fadeChildrenOut(content, function() {
-            if (matches.length > 0) {
-                showTitles(matches);
-            } else {
-                content.append($('p', 'Nobody here but us chickens...'));
-            }
-        });
+        return contentContainer;
     }
 
-    function showTag(tag) {
-        const matches = titles.filter(function(title) {
-            return title.tags.includes(tag);
-        });
-
-        fadeChildrenOut($('#content'), function() {
-            showTitles(matches);
-        });
-    }
-
-    function navigate() {
+    function navigate(content) {
         const hash = getHash();
 
         if (hash === 'credits') {
-            showCredits();
+            content.showCredits();
         } else if (hash === 'all') {
-            showAllTitles();
+            content.showAllTitles();
         } else if (hash === 'random') {
-            showRandomTitle();
+            content.showRandomTitle();
         } else if (hash.slice(0, 4) === 'tag/') {
             const tag = hash.slice(4);
 
-            showTag(tag);
+            content.showTag(tag);
         } else {
-            showHelp();
+            content.showHelp();
         }
     }
 
-    function createFooter() {
+    function createFooter(content) {
         const footer = $('#footer');
 
         footer.append($('h2', 'Super cool links', $('span', { 'id': 'secret-message' } )));
 
         $('#header-link').onclick = function() {
             if (getHash() === 'help') {
-                showHelp();
+                content.showHelp();
             }
         };
 
@@ -353,13 +375,13 @@
 
         helpLink.onclick = function() {
             if (getHash() === 'help') {
-                showHelp();
+                content.showHelp();
             }
         };
 
         creditsLink.onclick = function() {
             if (getHash() === 'credits') {
-                showCredits();
+                content.showCredits();
             }
         };
 
@@ -394,18 +416,12 @@
         );
 
         catLink.onclick = function() {
-            if (catModeOn === false) {
-                catModeOn = true;
+            content.toggleCatMode();
+
+            if (content.catModeOn) {
                 catButton.src = catIcon;
             } else {
-                catModeOn = false;
                 catButton.src = mouseIcon;
-            }
-
-            if (currentTitlesShown) {
-                fadeChildrenOut($('#content'), function() {
-                    showTitles(currentTitlesShown);
-                });
             }
 
             return false;
@@ -414,7 +430,7 @@
         footer.appendChild(catLink);
     }
 
-    function loadData(titles, listedTags) {
+    function loadData(content, listedTags) {
         const header = $('#header');
         const nav = $('#nav');
 
@@ -427,36 +443,22 @@
             }
         );
 
-        const invisibleKeys = [
-            'Alt',
-            'ArrowDown',
-            'ArrowLeft',
-            'ArrowRight',
-            'ArrowUp',
-            'CapsLock',
-            'Control',
-            'End',
-            'Escape',
-            'Home',
-            'NumLock',
-            'PageDown',
-            'PageUp',
-            'PrintScreen',
-            'ScrollLock',
-            'Shift',
-            'Tab'
-        ];
+        let searchTimeoutId = null;
+
+        function queueSearch(query) {
+            clearTimeout(searchTimeoutId);
+
+            searchTimeoutId = setTimeout(function() {
+                content.showMatches(query);
+            }, 250);
+        }
 
         searchInput.addEventListener('keyup', function(event) {
-            if (invisibleKeys.includes(event.key)) {
-                return;
-            }
-
-            showMatches(searchInput.value);
+            queueSearch(searchInput.value);
         });
 
         searchInput.addEventListener('paste', function() {
-            showMatches(searchInput.value);
+            queueSearch(searchInput.value);
         });
 
         header.insertBefore(searchInput, header.childNodes[2]);
@@ -468,36 +470,40 @@
             nav.append($('li', link));
         }
 
-        addLink('All Titles', 'all', showAllTitles);
-        addLink('Random', 'random', showRandomTitle);
+        addLink('All Titles', 'all', content.showAllTitles.bind(content));
+        addLink('Random', 'random', content.showRandomTitle.bind(content));
 
         listedTags.forEach(function(tag) {
             addLink(tag, 'tag/' + tag.toLowerCase(), (function() {
                 return function() {
-                    showTag(tag.toLowerCase());
+                    content.showTag(tag.toLowerCase());
                 };
             })(tag));
         });
 
         if (getHash() === '') {
-            showHelp();
+            content.showHelp();
         } else {
-            navigate();
+            navigate(content);
         }
     }
 
     function init() {
-        const content = $('#content');
+        const content = ContentContainer($('#content'));
 
-        content.append($('p', 'Loading...'));
+        window.onhashchange = function() {
+            navigate(content);
+        };
+
+        content.replaceWith($('p', 'Loading...'));
 
         function showErrorMessage() {
-            fadeChildrenOut(content, function() {
-                content.append($('p', 'An error occurred while attempting to retrieve the titles. Please try refreshing the page.'));
-            });
+            content.replaceWith(
+                $('p', 'An error occurred while attempting to retrieve the titles. Please try refreshing the page.')
+            );
         }
 
-        createFooter();
+        createFooter(content);
 
         // Load title data
         const req = new XMLHttpRequest();
@@ -510,9 +516,9 @@
                 try {
                     const config = JSON.parse(req.response);
 
-                    titles = config.titles; // Global
+                    content.titles = config.titles;
                     listedTags = config.listedTags;
-                    secrets = config.secrets; // Global
+                    content.secrets = config.secrets;
 
                     configParsed = true;
                 } catch (e) {
@@ -520,7 +526,7 @@
                 }
 
                 if (configParsed) {
-                    loadData(titles, listedTags);
+                    loadData(content, listedTags);
                 }
             } else {
                 showErrorMessage();
@@ -534,5 +540,4 @@
     }
 
     window.onload = init;
-    window.onhashchange = navigate;
 })();
