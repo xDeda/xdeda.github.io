@@ -439,7 +439,8 @@
             {
                 'id': 'search',
                 'type': 'text',
-                'placeholder': 'search for title'
+                'placeholder': 'search for title',
+                'autocomplete': 'off'
             }
         );
 
